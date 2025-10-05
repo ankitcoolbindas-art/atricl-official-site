@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATRICL - Authorized C&S Electric Service, Electrical Maintenance in Jharkhand</title>
+    
+    <!-- SEO Optimization Meta Tags -->
+    <meta name="description" content="ATRICL is the Authorized Service Center for C&S Electric Ltd. in Jharkhand, India. We offer expert electrical maintenance, reliable supply, and CCTV surveillance solutions with 8+ years of skilled technician experience.">
+    <meta name="keywords" content="ATRICL, C&S Electric Service Center Jharkhand, electrical maintenance, electrical supply, CCTV surveillance, Ankit Kumar, Jharkhand electrician, GeM registered, industrial maintenance">
+    <meta name="author" content="ATRICL">
+
+    <!-- JSON-LD Schema Markup for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ATRICL",
+      "image": "https://placehold.co/100x100/FFD700/004AAD?text=ATRICL", 
+      "telephone": "+91-8873752101",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "647/D1, GROUND FLOOR, SAIN PATH, OPP. PREMSONS HONDA SERVICE CENTER, NEAR KISHROGANJ CHOWK, BHUIYA TOLI",
+        "addressLocality": "Ranchi",
+        "addressRegion": "Jharkhand",
+        "postalCode": "834001",
+        "addressCountry": "IN"
+      },
+      "url": "https://www.atricl.com", 
+      "pricerange": "$$",
+      "serviceType": ["Electrical Maintenance", "Electrical Supply", "CCTV Surveillance Solutions"],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    }
+    </script>
+
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for high-quality SVG icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Load Three.js for 3D animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Custom Tailwind Configuration for ATRICL Blue and Gold -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'atricl-blue': '#004AAD', // Primary deep blue
+                        'atricl-gold': '#FFD700', // Primary accent gold
+                        'atricl-dark': '#1F2937', // Dark text
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Apply smooth scrolling and Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f7f9fb;
+        }
+        /* Style the 3D container */
+        #threeDCanvas {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 10px 30px rgba(0, 75, 173, 0.2);
+            transition: all 0.3s ease;
+            position: relative; /* Needed for positioning spinner/text */
+            background-color: #004AAD;
+        }
+        #threeDCanvas .loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+        }
+        /* Style for smooth content loading */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Modern Button style */
+        .btn-gold {
+            background-color: #FFD700;
+            color: #004AAD;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+        .btn-gold:hover {
+            background-color: #e6c200;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+            transform: translateY(-1px);
+        }
+        .whatsapp-icon {
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+        }
+        /* Style for the inline SVG logo - Golden Lotus */
+        .atricl-logo-svg {
+            width: 30px;
+            height: 30px;
+            margin-right: 8px;
+            vertical-align: top;
+            fill: #FFD700; /* Golden color */
+            transition: fill 0.3s;
+        }
+        .atricl-logo-header {
+            font-size: 24px; /* Adjust text size to fit logo */
+        }
+        /* Style for 3D element rendering */
+        #threeDCanvas canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Active navigation style for dynamic tabs */
+        .nav-link.active {
+            border-bottom: 3px solid #FFD700;
+            color: #004AAD;
+            font-weight: 600;
+        }
+        /* Style for embedded map to ensure it's responsive */
+        .map-container {
+            height: 100%;
+            width: 100%;
+        }
+        /* Style for tagline loading */
+        #dynamic-tagline.loading {
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+<body class="text-atricl-dark">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-xl">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo - Golden Theme (New Logo SVG) -->
+            <a href="#home" class="text-atricl-blue flex items-center transition duration-300 hover:text-atricl-dark atricl-logo-header font-extrabold tracking-widest">
+                <!-- Inline SVG of the uploaded logo, colored golden -->
+                <svg class="atricl-logo-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ATRICL Golden Lotus Logo for Electrical Services">
+                    <path fill="#FFD700" d="M256 0c-44.2 0-80 35.8-80 80v21.5c-44.9 14.5-79.6 57.5-79.6 108.5 0 60.1 48.7 108.8 108.8 108.8h1.8c-.8 2.2-1.3 4.5-1.3 6.9 0 2.4.5 4.7 1.3 6.9h-1.8c-60.1 0-108.8 48.7-108.8 108.8 0 60.1 48.7 108.8 108.8 108.8 30.6 0 58.2-12.7 78.1-33.1 19.9 20.4 47.5 33.1 78.1 33.1 60.1 0 108.8-48.7 108.8-108.8 0-60.1-48.7-108.8-108.8-108.8h-1.8c.8-2.2 1.3-4.5 1.3-6.9 0-2.4-.5-4.7-1.3-6.9h1.8c60.1 0 108.8-48.7 108.8-108.8 0-51-34.7-94-79.6-108.5V80c0-44.2-35.8-80-80-80zM256 512c-30.6 0-58.2-12.7-78.1-33.1-19.9 20.4-47.5 33.1-78.1 33.1-60.1 0-108.8-48.7-108.8-108.8 0-60.1 48.7-108.8 108.8-108.8h1.8c-.8-2.2-1.3-4.5-1.3-6.9 0-2.4.5-4.7 1.3-6.9h-1.8c-60.1 0-108.8-48.7-108.8-108.8 0-51 34.7-94 79.6-108.5V80c0-44.2 35.8-80 80-80s80 35.8 80 80v21.5c44.9 14.5 79.6 57.5 79.6 108.5 0 60.1-48.7 108.8-108.8 108.8h-1.8c.8 2.2 1.3 4.5 1.3 6.9 0 2.4-.5 4.7-1.3 6.9h1.8c60.1 0 108.8 48.7 108.8 108.8 0 60.1-48.7 108.8-108.8 108.8z"/>
+                </svg>
+                ATRICL
+            </a>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#home" class="text-atricl-dark hover:text-atricl-gold transition duration-200">Home</a>
+                <a href="#main-content-section" onclick="showSection('services-content', this)" class="nav-link text-atricl-dark hover:text-atricl-gold transition duration-200 active">Services</a>
+                <a href="#main-content-section" onclick="showSection('projects-content', this)" class="nav-link text-atricl-dark hover:text-atricl-gold transition duration-200">Projects</a>
+                <a href="#main-content-section" onclick="showSection('guide-content', this)" class="nav-link text-atricl-dark hover:text-atricl-gold transition duration-200">AI Guide</a>
+                <a href="#main-content-section" onclick="showSection('about-content', this)" class="nav-link text-atricl-dark hover:text-atricl-gold transition duration-200">About Us</a>
+                <a href="#main-content-section" onclick="showSection('contact-content', this)" class="nav-link text-atricl-dark hover:text-atricl-gold transition duration-200">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="menu-button" class="md:hidden text-atricl-blue hover:text-atricl-gold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-white shadow-lg pb-4">
+            <a href="#home" class="block px-4 py-2 text-atricl-dark hover:bg-atricl-blue/10">Home</a>
+            <a href="#main-content-section" onclick="showSection('services-content', this)" class="block px-4 py-2 text-atricl-dark hover:bg-atricl-blue/10">Services</a>
+            <a href="#main-content-section" onclick="showSection('projects-content', this)" class="block px-4 py-2 text-atricl-dark hover:bg-atricl-blue/10">Projects</a>
+            <a href="#main-content-section" onclick="showSection('guide-content', this)" class="block px-4 py-2 text-atricl-dark hover:bg-atricl-blue/10">AI Guide</a>
+            <a href="#main-content-section" onclick="showSection('about-content', this)" class="block px-4 py-2 text-atricl-dark hover:bg-atricl-blue/10">About Us</a>
+            <a href="#main-content-section" onclick="showSection('contact-content', this)" class="block px-4 py-2 text-atricl-dark hover:bg-atricl-blue/10">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section 1: Hero and 3D Animation -->
+        <section id="home" class="bg-atricl-blue text-white py-16 md:py-24 fade-in-up">
+            <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <!-- Updated Headline -->
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                        ATRICL: <span class="text-atricl-gold">Powering Your Progress</span> in Jharkhand.
+                    </h1>
+                    
+                    <!-- Dynamic Tagline Generated by Gemini API -->
+                    <p id="dynamic-tagline" class="text-xl text-white/90 loading">
+                        <!-- Content inserted by fetchDynamicTagline() on load -->
+                        Loading dynamic tagline...
+                    </p>
+
+                    <!-- New Quick Quote CTA Button -->
+                    <a href="#main-content-section" onclick="showSection('quote-content', this)" class="inline-flex items-center px-8 py-4 text-lg font-bold rounded-full btn-gold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator mr-2"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8"/><path d="M8 10h8"/><path d="M8 14h8"/><path d="M8 18h8"/></svg>
+                        Get a Quick Quote
+                    </a>
+                </div>
+                
+                <!-- 3D Electrical Grid Animation Container -->
+                <div id="threeDCanvas" class="bg-atricl-blue/50">
+                    <div class="loading-text">Loading 3D Circuit Grid...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Quick Links / Company Snapshot -->
+        <section class="bg-atricl-blue/10 py-12 md:py-16 fade-in-up">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-extrabold text-atricl-blue mb-10 text-center">
+                    Why Choose ATRICL?
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-atricl-gold/70">
+                        <span class="text-4xl text-atricl-gold block mb-3">6+</span>
+                        <h3 class="text-xl font-bold mb-2">Skilled Technicians</h3>
+                        <p class="text-gray-600">Each with more than **8 years of experience** in their field, ensuring expert solutions.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-atricl-gold/70">
+                        <span class="text-4xl text-atricl-gold block mb-3">C&S Electric Ltd.</span>
+                        <h3 class="text-xl font-bold mb-2">Authorized Service Center</h3>
+                        <p class="text-gray-600">The trusted partner for C&S Electric products in the **Jharkhand, India Region**.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-atricl-gold/70">
+                        <span class="text-4xl text-atricl-gold block mb-3">GeM Registered</span>
+                        <h3 class="text-xl font-bold mb-2">Trusted Government Partner</h3>
+                        <p class="text-gray-600">Registered in the **GeM** (Government e-Marketplace) for trusted public procurement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 3: Dynamic Content Area -->
+        <section id="main-content-section" class="container mx-auto px-4 py-16 md:py-20 fade-in-up">
+
+            <!-- Content Panel 1: Services (Default View) -->
+            <div id="services-content" class="content-panel">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-atricl-blue mb-12 text-center">
+                    Our Comprehensive Electrical Solutions
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Service Card 1: Maintenance & Service -->
+                    <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-atricl-blue/30 transition duration-300 border-t-8 border-atricl-blue">
+                        <div class="text-4xl text-atricl-gold mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.4 1.4a1 1 0 0 0 1.4 0l.7-.7a1 1 0 0 0 0-1.4l-1.4-1.4a1 1 0 0 0-1.4 0z"/><path d="m21.2 2.8-.7.7c-.5.5-.5 1.3 0 1.8l1.4 1.4c.5.5 1.3.5 1.8 0l.7-.7c.5-.5.5-1.3 0-1.8l-1.4-1.4c-.5-.5-1.3-.5-1.8 0z"/><path d="M17.6 15.4L10.3 8.1c-.5-.5-1.3-.5-1.8 0L7.1 9.5c-.5.5-.5 1.3 0 1.8l7.3 7.3c.5.5 1.3.5 1.8 0l1.4-1.4c.5-.5.5-1.3 0-1.8z"/><path d="M14.7 18.7l-1.4-1.4c-.5-.5-1.3-.5-1.8 0L9.5 17.6c-.5.5-.5 1.3 0 1.8l1.4 1.4c.5.5 1.3.5 1.8 0l1.4-1.4c.5-.5.5-1.3 0-1.8z"/><path d="M8.8 13.9l-1.4-1.4c-.5-.5-1.3-.5-1.8 0L5.7 13.3c-.5.5-.5 1.3 0 1.8l1.4 1.4c.5.5 1.3.5 1.8 0l.7-.7c.5-.5.5-1.3 0-1.8z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-atricl-blue">Electrical Maintenance & Service</h3>
+                        <p class="text-gray-700">Preventative and corrective maintenance services for industries, commercial setups, and government organizations throughout the Jharkhand region. Timely and dedicated service guaranteed.</p>
+                        <a href="#main-content-section" onclick="showSection('cs-electric-content', this)" class="text-atricl-gold hover:text-atricl-blue font-semibold mt-4 block">View C&S Authorized Services →</a>
+                    </div>
+                    
+                    <!-- Service Card 2: Supply & Sales -->
+                    <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-atricl-blue/30 transition duration-300 border-t-8 border-atricl-blue">
+                        <div class="text-4xl text-atricl-gold mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package-open"><path d="M7.7 9.8 2.2 6.7M16.3 9.8l5.5-3.1M2.2 14.3l5.5 3.1M16.3 14.3l5.5 3.1M12 21V6.3"/><path d="m22 17.5-10-5.7-10 5.7L12 23z"/><path d="m2 6.7 10 5.7 10-5.7L12 1z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-atricl-blue">Electrical Supply & Sales</h3>
+                        <p class="text-gray-700">We offer sales and supply of high-quality electrical components. Proudly registered in the **GeM (Government e-Marketplace)**, serving retail, industrial, and government sectors.</p>
+                    </div>
+                    
+                    <!-- Service Card 3: CCTV & Security -->
+                    <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-atricl-blue/30 transition duration-300 border-t-8 border-atricl-blue">
+                        <div class="text-4xl text-atricl-gold mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-atricl-blue">CCTV Surveillance Solutions</h3>
+                        <p class="text-gray-700">Comprehensive security solutions including supply, installation, and maintenance of modern CCTV surveillance systems tailored to your industrial or commercial needs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Panel 2: Project Gallery (Hidden by default) -->
+            <div id="projects-content" class="content-panel hidden">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-atricl-blue mb-4 text-center">
+                    Project Gallery: Proving Our Expertise
+                </h2>
+                <p class="text-center text-atricl-dark/70 mb-10 max-w-3xl mx-auto">
+                    A glimpse into the diverse electrical, industrial, and surveillance projects delivered across the Jharkhand region. Quality work is our commitment.
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Project 1 Mockup -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <img src="https://placehold.co/400x250/004AAD/FFD700?text=Industry+Maintenance" alt="Industrial Maintenance Project Image" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-atricl-blue">Industrial Breaker Overhaul</h4>
+                            <p class="text-sm text-gray-600 mt-1">Successfully commissioned major switchgear and breaker maintenance for a large manufacturing unit in Ranchi.</p>
+                            <span class="inline-block bg-atricl-gold text-atricl-dark text-xs font-semibold px-2 py-0.5 rounded-full mt-2">C&S Service</span>
+                        </div>
+                    </div>
+                    <!-- Project 2 Mockup -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <img src="https://placehold.co/400x250/1F2937/FFD700?text=Govt+Supply" alt="Government Supply Project Image" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-atricl-blue">Bulk Electrical Supply (GeM)</h4>
+                            <p class="text-sm text-gray-600 mt-1">Delivered high-volume material supply through the GeM portal to a State Government facility on time.</p>
+                            <span class="inline-block bg-atricl-blue/20 text-atricl-blue text-xs font-semibold px-2 py-0.5 rounded-full mt-2">Supply & Sales</span>
+                        </div>
+                    </div>
+                    <!-- Project 3 Mockup -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <img src="https://placehold.co/400x250/004AAD/5DADE2?text=CCTV+Installation" alt="CCTV Installation Project Image" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-atricl-blue">Commercial Surveillance Setup</h4>
+                            <p class="text-sm text-gray-600 mt-1">Full installation and networking of 16-channel CCTV system for a major retail electric shop.</p>
+                            <span class="inline-block bg-green-500/20 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full mt-2">CCTV Solution</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-10">
+                    <a href="https://wa.me/918873752101" target="_blank" class="inline-flex items-center px-6 py-3 text-md font-bold rounded-lg text-white bg-green-600 hover:bg-green-700 transition duration-300">
+                        Discuss Your Project on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Content Panel 3: AI Guide (Troubleshooting) -->
+            <div id="guide-content" class="content-panel hidden">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-atricl-blue mb-4 text-center">
+                    E-Tech Guide: Instant Troubleshooting (Powered by AI)
+                </h2>
+                <p class="text-center text-atricl-dark/70 mb-10 max-w-3xl mx-auto">
+                    Use our AI knowledge base for common electrical issues and safe preliminary troubleshooting steps. **Always prioritize safety and call a professional for complex issues.**
+                </p>
+
+                <div class="bg-white p-6 md:p-10 rounded-xl shadow-2xl border-t-4 border-atricl-gold max-w-4xl mx-auto space-y-6">
+                    <input type="text" id="ai-query" placeholder="e.g., 'What to do if a breaker trips repeatedly?' or 'Safety steps for loose wiring.'" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-atricl-blue focus:border-atricl-blue transition duration-200">
+                    <button onclick="fetchAiAdvice()" class="w-full px-4 py-3 text-lg font-semibold rounded-lg text-white bg-atricl-blue hover:bg-atricl-dark transition duration-300">
+                        Get Troubleshooting Advice
+                    </button>
+                    
+                    <div id="ai-response-container" class="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg hidden">
+                        <p class="font-bold text-atricl-blue mb-2">⚡ Expert Guidance:</p>
+                        <div id="ai-response-text" class="text-atricl-dark leading-relaxed"></div>
+                        <div id="ai-sources" class="text-xs text-gray-500 mt-4 border-t pt-2"></div>
+                    </div>
+                    <div id="ai-loading" class="text-center text-atricl-blue hidden">
+                        <svg class="animate-spin h-6 w-6 text-atricl-blue inline-block mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                        Analyzing current data for safe practices...
+                    </div>
+                    <div id="ai-error" class="text-center text-red-600 hidden p-2 bg-red-50 rounded-lg">
+                        An error occurred. Please try a different query or contact us directly.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Panel 4: About Us -->
+            <div id="about-content" class="content-panel hidden">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-atricl-blue mb-4 text-center">
+                    A Legacy of Dedication and Expertise
+                </h2>
+                <p class="text-center text-atricl-dark/70 mb-10 max-w-xl mx-auto">
+                    Founded on the principles of quality and reliability, ATRICL is committed to powering progress across Jharkhand.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-atricl-blue p-8 rounded-xl shadow-2xl text-white">
+                    
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4">Our Story & Commitment</h3>
+                        <p class="text-lg mb-4">
+                            ATRICL, founded by **Ankit Kumar** on **May 30, 2024**, was established with the core mission of providing **great and timely service with dedication** to the Jharkhand region.
+                        </p>
+                        <p class="text-lg mb-4 font-semibold text-atricl-gold">
+                            We pride ourselves on being the authorized service center for C&S Electric Ltd., a testament to our commitment to quality and technical expertise.
+                        </p>
+                        <p class="text-md">
+                            Our primary customers include **industries, government organizations, and retail electric shops**. We are focused on building long-term associations through reliable sales and service.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-bold mb-4">Our Team & Trust</h3>
+                        <div class="bg-white/10 p-4 rounded-lg flex items-center shadow-lg">
+                            <span class="text-atricl-gold text-3xl font-bold mr-4">✓</span>
+                            <p class="text-md">Registered on **GeM** (Government e-Marketplace) for trusted public procurement.</p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-lg flex items-center shadow-lg">
+                            <span class="text-atricl-gold text-3xl font-bold mr-4">✓</span>
+                            <p class="text-md">Team of 6+ skilled technicians with **8+ years** of industry experience.</p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-lg flex items-center shadow-lg">
+                            <span class="text-atricl-gold text-3xl font-bold mr-4">✓</span>
+                            <p class="text-md">Dedicated local service for the **Jharkhand, India Region**.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Panel 5: Contact Us & AI Drafting Tool -->
+            <div id="contact-content" class="content-panel hidden">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-atricl-blue mb-4 text-center">
+                    Get in Touch for Sales or Service
+                </h2>
+                <p class="text-center text-atricl-dark/70 mb-10 max-w-xl mx-auto">
+                    Fill out the form below or contact us directly via WhatsApp for the fastest response.
+                </p>
+
+                <!-- NEW: Map and Address Details -->
+                <div class="max-w-5xl mx-auto mb-12">
+                    <h3 class="text-2xl font-bold text-atricl-dark mb-4 border-b pb-2">Our Office Location (Ranchi)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Address -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-atricl-gold">
+                            <p class="font-semibold text-atricl-blue mb-2 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mr-2"><path d="M12 21.7l-4.5-4.5c-2.4-2.4-2.4-6.3 0-8.7 2.4-2.4 6.3-2.4 8.7 0 2.4 2.4 2.4 6.3 0 8.7L12 21.7z"/><circle cx="12" cy="10.2" r="3"/></svg>
+                                Registered Address:
+                            </p>
+                            <p class="text-gray-700">647/D1, GROUND FLOOR, SAIN PATH, OPP. PREMSONS HONDA SERVICE CENTER, NEAR KISHROGANJ CHOWK, BHUIYA TOLI, UPPER BAZAR, RANCHI - 834001</p>
+                            <p class="mt-4 text-atricl-blue font-semibold flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone mr-2"><path d="M22 16.9v3a2 2 0 0 1-2 2h-3.5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2zM10 2v3a2 2 0 0 0 2 2h3.5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-3a2 2 0 0 0-2 2zM5 16h8"/><path d="M19 19H8a2 2 0 0 0-2 2v1"/><path d="M16 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v10z"/></svg>
+                                Phone: +91 8873752101
+                            </p>
+                        </div>
+                        <!-- Map -->
+                        <div class="h-64 w-full rounded-xl shadow-xl overflow-hidden">
+                            <!-- Google Maps Iframe embedded with the full address -->
+                            <iframe 
+                                class="map-container"
+                                frameborder="0" 
+                                style="border:0" 
+                                src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=647/D1,+GROUND+FLOOR,+SAIN+PATH,+OPP.+PREMSONS+HONDA+SERVICE+CENTER,+NEAR+KISHROGANJ+CHOWK,+BHUIYA+TOLI,+UPPER+BAZAR,+RANCHI+-+834001&t=&z=14&ie=UTF8&iwloc=B&output=embed" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                <!-- END NEW: Map and Address Details -->
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto mt-12">
+                    
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-atricl-blue space-y-4">
+                        <h3 class="text-2xl font-bold text-atricl-dark">Service Inquiry Form</h3>
+                        
+                        <input type="text" id="contact-name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg">
+                        <input type="email" id="contact-email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg">
+                        <select id="contact-service" class="w-full p-3 border border-gray-300 rounded-lg appearance-none">
+                            <option value="General Inquiry">Select Service Required</option>
+                            <option value="C&S Electric Ltd. Maintenance">C&S Electric Ltd. Maintenance</option>
+                            <option value="Electrical Supply/Sales Inquiry">Electrical Supply/Sales Inquiry</option>
+                            <option value="CCTV Surveillance Installation">CCTV Surveillance Installation</option>
+                            <option value="Other Maintenance Service">Other Maintenance Service</option>
+                        </select>
+                        <textarea id="contact-message" rows="4" placeholder="Briefly describe your requirements or issue." class="w-full p-3 border border-gray-300 rounded-lg"></textarea>
+                        
+                        <button onclick="draftResponse()" class="w-full px-4 py-3 text-lg font-semibold rounded-lg btn-gold">
+                            ✨ Draft Initial Response Summary (Internal Use)
+                        </button>
+                    </div>
+                    
+                    <!-- AI Response Draft Output -->
+                    <div class="p-8 space-y-4">
+                        <h3 class="text-2xl font-bold text-atricl-dark mb-4">Drafted Response (Internal Tool)</h3>
+                        <p class="text-sm text-gray-500 mb-4">This tool drafts a professional email based on the form data for quick follow-up by the ATRICL team.</p>
+
+                        <div id="draft-loading" class="text-center text-atricl-blue hidden">
+                            <svg class="animate-spin h-6 w-6 text-atricl-blue inline-block mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                            Drafting professional response...
+                        </div>
+                        
+                        <div id="draft-output" class="bg-gray-100 p-4 rounded-lg shadow-inner border border-gray-200 min-h-[200px] text-sm hidden">
+                            <p class="font-semibold text-atricl-blue mb-2">Draft Email Subject:</p>
+                            <div id="draft-subject" class="mb-4 bg-white p-2 rounded"></div>
+                            <p class="font-semibold text-atricl-blue mb-2">Draft Email Body:</p>
+                            <div id="draft-body" class="bg-white p-2 rounded whitespace-pre-wrap"></div>
+                        </div>
+                        
+                        <button onclick="copyDraft()" id="copy-button" class="w-full px-4 py-2 text-md font-semibold rounded-lg text-atricl-blue bg-atricl-blue/20 hover:bg-atricl-blue/30 transition duration-300 hidden">
+                            Copy Draft to Clipboard
+                        </button>
+
+                        <a href="https://wa.me/918873752101" target="_blank" class="w-full inline-flex items-center justify-center px-4 py-3 text-lg font-bold rounded-lg text-white bg-green-600 hover:bg-green-700 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square mr-2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            Chat Directly on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Panel 6: Quick Quote Calculator (New) -->
+            <div id="quote-content" class="content-panel hidden">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-atricl-blue mb-4 text-center">
+                    Quick Quote Calculator
+                </h2>
+                <p class="text-center text-atricl-dark/70 mb-10 max-w-xl mx-auto">
+                    Get an instant estimate for your service needs. This helps us prepare the best quote for your project quickly.
+                </p>
+                <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-atricl-gold max-w-md mx-auto space-y-6">
+                    <h3 class="text-2xl font-bold text-atricl-dark mb-4">1. Service Type</h3>
+                    <select id="quote-service" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-atricl-blue focus:border-atricl-blue transition duration-200" onchange="updateQuote()">
+                        <option value="0">Select Service Category</option>
+                        <option value="1500">C&S Electric Maintenance/Repair</option>
+                        <option value="800">General Electrical Maintenance</option>
+                        <option value="2000">CCTV System Installation/Service</option>
+                        <option value="1000">Electrical Supply (Large Order)</option>
+                    </select>
+
+                    <h3 class="text-2xl font-bold text-atricl-dark mb-4">2. Project Scale</h3>
+                    <select id="quote-scale" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-atricl-blue focus:border-atricl-blue transition duration-200" onchange="updateQuote()">
+                        <option value="1">Select Project Scale</option>
+                        <option value="1">Small (Retail/Single Machine)</option>
+                        <option value="1.5">Medium (Commercial/Small Plant)</option>
+                        <option value="2.5">Large (Industrial/Government)</option>
+                    </select>
+                    
+                    <h3 class="text-2xl font-bold text-atricl-dark mb-4">3. Estimated Cost:</h3>
+                    <div class="bg-atricl-blue text-white p-5 rounded-lg text-center shadow-inner">
+                        <p class="text-lg font-semibold">Base Estimate (INR)</p>
+                        <p id="quote-output" class="text-4xl font-extrabold text-atricl-gold mt-1">₹ 0</p>
+                        <p class="text-sm mt-2">This is a starting estimate only. Final cost requires site inspection.</p>
+                    </div>
+
+                    <p class="text-center text-gray-700 text-sm">Ready to proceed? Click below to confirm your request and get a final quote.</p>
+                    <a href="https://wa.me/918873752101" target="_blank" class="w-full inline-flex items-center justify-center px-4 py-3 text-lg font-bold rounded-lg text-white bg-green-600 hover:bg-green-700 transition duration-300">
+                        Confirm Quote & WhatsApp Us
+                    </a>
+                </div>
+            </div>
+
+            <!-- Content Panel 7: C&S Electric Details (New) -->
+            <div id="cs-electric-content" class="content-panel hidden">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-atricl-blue mb-4 text-center">
+                    Authorized C&S Electric Ltd. Service Center
+                </h2>
+                <p class="text-center text-atricl-dark/70 mb-10 max-w-3xl mx-auto">
+                    ATRICL is your dedicated and authorized partner for comprehensive C&S Electric product service and maintenance across the Jharkhand region.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-atricl-gold text-center">
+                        <div class="text-4xl text-atricl-gold mb-3 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-battery-charging"><path d="M15 18H9"/><path d="M10.8 12L15 12 11.2 21 11.2 12 7 12 10.8 3 10.8 12Z"/><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Genuine Components</h3>
+                        <p class="text-sm text-gray-600">Use of only certified C&S Electric parts for all replacements and repairs, ensuring longevity and compliance.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-atricl-gold text-center">
+                        <div class="text-4xl text-atricl-gold mb-3 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Warranty Protection</h3>
+                        <p class="text-sm text-gray-600">Maintenance services maintain full manufacturer warranties on C&S products, protecting your investment.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-atricl-gold text-center">
+                        <div class="text-4xl text-atricl-gold mb-3 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2zM10 6h4v16h-4zM6 10h2v4H6zM16 10h2v4h-2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Industrial Focus</h3>
+                        <p class="text-sm text-gray-600">Specializing in high-capacity electrical protection and distribution systems essential for industrial clients.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="https://wa.me/918873752101" target="_blank" class="inline-flex items-center px-6 py-3 text-md font-bold rounded-lg btn-gold">
+                        Schedule C&S Electric Service
+                    </a>
+                </div>
+            </div>
+            
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-atricl-dark text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-8 mb-4">
+                <p>&copy; 2024 ATRICL. All Rights Reserved.</p>
+                <a href="#main-content-section" onclick="showSection('about-content', this)" class="hover:text-atricl-gold transition duration-200">About ATRICL</a>
+                <a href="#main-content-section" onclick="showSection('contact-content', this)" class="hover:text-atricl-gold transition duration-200">Contact Us</a>
+                <a href="https://wa.me/918873752101" target="_blank" class="text-atricl-gold font-semibold hover:text-white transition duration-200">
+                    WhatsApp: 8873752101
+                </a>
+            </div>
+            <p class="text-sm text-gray-400 mt-4 max-w-xl mx-auto">
+                **Registered Address:** 647/D1, GROUND FLOOR, SAIN PATH, OPP. PREMSONS HONDA SERVICE CENTER, NEAR KISHROGANJ CHOWK, BHUIYA TOLI, UPPER BAZAR, RANCHI - 834001.
+            </p>
+            <p class="text-sm text-gray-400 mt-2">Authorized Service Center for C&S Electric Ltd. - Jharkhand, India Region.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // --- General Utility and UI Functions ---
+        
+        // Toggle Mobile Menu
+        document.getElementById('menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Apply fade-in effect after content is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply fade-in to the hero section immediately
+            document.querySelector('#home').classList.add('loaded');
+            
+            // Apply fade-in to other sections on page load
+            const initialSections = document.querySelectorAll('.fade-in-up');
+            initialSections.forEach(section => {
+                section.classList.add('loaded');
+            });
+
+            // Initialize Lucide Icons
+            lucide.createIcons();
+            
+            // Start fetching the dynamic tagline
+            fetchDynamicTagline();
+        });
+
+        // --- Dynamic Content Switching ---
+        function showSection(targetId, element) {
+            // Hide all content panels
+            document.querySelectorAll('.content-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            // Show the target panel
+            document.getElementById(targetId).classList.remove('hidden');
+
+            // Update active state in navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            if (element) {
+                element.classList.add('active');
+            }
+
+            // Scroll to the main content section after switching
+            document.getElementById('main-content-section').scrollIntoView({ behavior: 'smooth' });
+            
+             // Close mobile menu after selection
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+        }
+        
+        // Set 'Services' as the default active tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('services-content', document.querySelector('.nav-link'));
+        });
+
+        // --- Quick Quote Calculator Logic ---
+        function updateQuote() {
+            const serviceCost = parseFloat(document.getElementById('quote-service').value) || 0;
+            const scaleMultiplier = parseFloat(document.getElementById('quote-scale').value) || 1;
+            
+            const baseEstimate = serviceCost * scaleMultiplier;
+            const finalEstimate = Math.round(baseEstimate / 100) * 100; // Round to nearest 100 for clean display
+
+            const outputElement = document.getElementById('quote-output');
+            
+            if (serviceCost === 0) {
+                 outputElement.textContent = '₹ 0';
+            } else {
+                 outputElement.textContent = `₹ ${finalEstimate.toLocaleString('en-IN')}+`;
+            }
+        }
+        
+        // --- Copy to Clipboard Utility ---
+        function copyTextToClipboard(text) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                return true;
+            } catch (err) {
+                console.error('Copy failed:', err);
+                return false;
+            } finally {
+                document.body.removeChild(tempInput);
+            }
+        }
+        
+        // --- THREE.JS 3D Animation Setup ---
+        // We use window.onload to ensure Three.js can access the DOM element
+        window.onload = function () {
+            initThreeDAnimation();
+            // Ensure initial quote calculation runs once the DOM is ready
+            updateQuote();
+        }
+
+        function initThreeDAnimation() {
+            const container = document.getElementById('threeDCanvas');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            let scene = new THREE.Scene();
+            let camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            let renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+
+            // Hide the loading text once initialization starts
+            container.querySelector('.loading-text').style.display = 'none';
+
+            // Configure lighting
+            const ambientLight = new THREE.AmbientLight(0xeeeeee, 1.5);
+            scene.add(ambientLight);
+            const pointLight = new THREE.PointLight(0xFFD700, 5, 100);
+            pointLight.position.set(10, 10, 10);
+            scene.add(pointLight);
+
+            // --- Electrical Theme Object: Wireframe Sphere Grid with Glowing Nodes ---
+            const geometry = new THREE.IcosahedronGeometry(6, 2); // Use Icosahedron for abstract grid shape
+            const edges = new THREE.EdgesGeometry(geometry);
+            
+            // Wireframe Material (Blue)
+            const wireframeMaterial = new THREE.LineBasicMaterial({
+                color: 0x5DADE2, // Secondary blue
+                linewidth: 1,
+                transparent: true,
+                opacity: 0.5
+            });
+            const line = new THREE.LineSegments(edges, wireframeMaterial);
+            scene.add(line);
+
+            // Glowing Nodes (Gold Points)
+            const positions = geometry.attributes.position.array;
+            const pointGeometry = new THREE.BufferGeometry();
+            pointGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const pointMaterial = new THREE.PointsMaterial({
+                color: 0xFFD700, // Golden
+                size: 0.2,
+                sizeAttenuation: true,
+                transparent: true,
+                blending: THREE.AdditiveBlending,
+            });
+            const points = new THREE.Points(pointGeometry, pointMaterial);
+            scene.add(points);
+            
+            camera.position.z = 10;
+
+            // Handle responsiveness on window resize
+            window.addEventListener('resize', () => {
+                const newWidth = container.clientWidth;
+                const newHeight = container.clientHeight;
+                camera.aspect = newWidth / newHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(newWidth, newHeight);
+            });
+
+            // Animation Loop
+            const animate = function () {
+                requestAnimationFrame(animate);
+
+                // Rotation
+                line.rotation.x += 0.0005;
+                line.rotation.y += 0.001;
+                points.rotation.x += 0.0005;
+                points.rotation.y += 0.001;
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+        }
+
+        // --- GEMINI API Functions ---
+        
+        const API_KEY = ""; // Placeholder for Canvas environment API Key
+        const API_URL_GEMINI = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+        
+        // 0. Dynamic Tagline Generator (Hero Section)
+        async function fetchDynamicTagline() {
+            const taglineElement = document.getElementById('dynamic-tagline');
+            taglineElement.classList.add('loading');
+            
+            const systemPrompt = "You are a witty, professional marketing copywriter for ATRICL, an authorized C&S Electric Service Center in Jharkhand, India. Generate a single, concise, and high-impact tagline (max 15 words) for the website's hero section. Focus on trust, speed, and their 8+ years of expert service.";
+
+            const userQuery = "Generate a fresh marketing tagline emphasizing reliability, C&S authorization, and experienced local service in Jharkhand.";
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+
+            try {
+                const response = await fetchWithExponentialBackoff(API_URL_GEMINI, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (text) {
+                    taglineElement.textContent = text.trim();
+                } else {
+                    // Fallback to static text
+                    taglineElement.textContent = "Authorized Service Center for C&S Electric Ltd. | Delivering Expert Maintenance, Supply, and CCTV Solutions since 2024.";
+                }
+
+            } catch (error) {
+                // Fallback to static text on API failure
+                taglineElement.textContent = "Authorized Service Center for C&S Electric Ltd. | Delivering Expert Maintenance, Supply, and CCTV Solutions since 2024.";
+                console.error("Failed to fetch dynamic tagline:", error);
+            } finally {
+                taglineElement.classList.remove('loading');
+            }
+        }
+
+
+        // 1. AI Troubleshooting Guide (Section 2)
+        async function fetchAiAdvice() {
+            const query = document.getElementById('ai-query').value.trim();
+            const responseContainer = document.getElementById('ai-response-container');
+            const responseText = document.getElementById('ai-response-text');
+            const sourcesDiv = document.getElementById('ai-sources');
+            const loadingIndicator = document.getElementById('ai-loading');
+            const errorDiv = document.getElementById('ai-error');
+
+            if (!query) {
+                responseText.innerHTML = "Please enter an electrical issue or question for the E-Tech Guide.";
+                responseContainer.classList.remove('hidden');
+                return;
+            }
+
+            loadingIndicator.classList.remove('hidden');
+            responseContainer.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+            responseText.innerHTML = '';
+            sourcesDiv.innerHTML = '';
+
+            const systemPrompt = "You are the ATRICL E-Tech Guide. Provide clear, concise, and safety-focused preliminary troubleshooting guidance for the user's electrical inquiry. Always prioritize safety (e.g., 'Turn off power immediately'). Answer in 3-4 bullet points.";
+
+            const payload = {
+                contents: [{ parts: [{ text: query }] }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+
+            try {
+                const response = await fetchWithExponentialBackoff(API_URL_GEMINI, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+                    responseText.innerHTML = marked.parse(text); // Use marked to render markdown bullets
+                    responseContainer.classList.remove('hidden');
+
+                    // Extract and display grounding sources
+                    let sources = [];
+                    const groundingMetadata = candidate.groundingMetadata;
+                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                        sources = groundingMetadata.groundingAttributions
+                            .map(attr => ({
+                                uri: attr.web?.uri,
+                                title: attr.web?.title,
+                            }))
+                            .filter(source => source.uri && source.title);
+                    }
+                    
+                    if (sources.length > 0) {
+                        sourcesDiv.innerHTML = 'Sources: ' + sources.map((s, i) => 
+                            `<a href="${s.uri}" target="_blank" class="text-atricl-blue hover:underline">${s.title}</a>`
+                        ).join(' | ');
+                    } else {
+                        sourcesDiv.innerHTML = 'Source: Based on general electrical safety knowledge.';
+                    }
+
+                } else {
+                    errorDiv.classList.remove('hidden');
+                    console.error('Gemini API response missing text:', result);
+                }
+
+            } catch (error) {
+                errorDiv.classList.remove('hidden');
+                console.error('Error fetching AI advice:', error);
+            } finally {
+                loadingIndicator.classList.add('hidden');
+            }
+        }
+        
+        // 2. Draft Initial Response Summary (Section 6)
+        async function draftResponse() {
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const service = document.getElementById('contact-service').value;
+            const message = document.getElementById('contact-message').value.trim();
+
+            const draftOutput = document.getElementById('draft-output');
+            const draftSubject = document.getElementById('draft-subject');
+            const draftBody = document.getElementById('draft-body');
+            const loadingIndicator = document.getElementById('draft-loading');
+            const copyButton = document.getElementById('copy-button');
+
+            if (!name || !email || service === 'General Inquiry' || !message) {
+                draftBody.innerHTML = "Please fill in all fields (Name, Email, Service, and Message) to generate a complete draft.";
+                draftOutput.classList.remove('hidden');
+                copyButton.classList.add('hidden');
+                return;
+            }
+
+            loadingIndicator.classList.remove('hidden');
+            draftOutput.classList.add('hidden');
+            copyButton.classList.add('hidden');
+
+            const userQuery = `Draft a professional, friendly, initial email response for a lead named: ${name} (Email: ${email}). They are requesting service for: ${service}. Their full message is: "${message}". The response must confirm receipt, mention our authorization for C&S Electric Ltd. in Jharkhand, and state we will follow up with a specific quote or call within 4 hours. Provide the Subject and Body separately.`;
+
+            const systemPrompt = "You are a professional Sales Manager for ATRICL, the Authorized Service Center for C&S Electric Ltd. in Jharkhand. Your tone must be courteous, confident, and focused on timely resolution. Output must be valid JSON matching the schema below.";
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            "subject": { "type": "STRING", "description": "The professional email subject line." },
+                            "body": { "type": "STRING", "description": "The full, professionally drafted email body." }
+                        },
+                        "propertyOrdering": ["subject", "body"]
+                    }
+                }
+            };
+
+            try {
+                const response = await fetchWithExponentialBackoff(API_URL_GEMINI, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (jsonText) {
+                    const draft = JSON.parse(jsonText);
+                    draftSubject.textContent = draft.subject;
+                    draftBody.textContent = draft.body;
+                    draftOutput.classList.remove('hidden');
+                    copyButton.classList.remove('hidden');
+                } else {
+                    draftBody.textContent = "Error drafting response. Please check input or network connection.";
+                    draftOutput.classList.remove('hidden');
+                }
+
+            } catch (error) {
+                draftBody.textContent = `Failed to connect to drafting service. Error: ${error.message}.`;
+                draftOutput.classList.remove('hidden');
+            } finally {
+                loadingIndicator.classList.add('hidden');
+            }
+        }
+        
+        // Function to handle clipboard copy for the drafted response
+        function copyDraft() {
+            const subject = document.getElementById('draft-subject').textContent;
+            const body = document.getElementById('draft-body').textContent;
+            
+            const fullDraft = `Subject: ${subject}\n\nBody:\n${body}`;
+
+            if (copyTextToClipboard(fullDraft)) {
+                document.getElementById('copy-button').textContent = "Copied!";
+                setTimeout(() => {
+                    document.getElementById('copy-button').textContent = "Copy Draft to Clipboard";
+                }, 2000);
+            } else {
+                alert('Copying failed. Please manually select and copy the text.');
+            }
+        }
+
+        // --- Exponential Backoff Fetch Utility ---
+        async function fetchWithExponentialBackoff(url, options, maxRetries = 5, delay = 1000) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status !== 429) { // Not a rate limit error
+                        return response;
+                    }
+                    // If rate limit, wait and retry
+                } catch (error) {
+                    // Log connection errors but don't stop immediately
+                    if (i === maxRetries - 1) throw error; 
+                }
+                await new Promise(resolve => setTimeout(resolve, delay * (2 ** i)));
+            }
+            throw new Error('Max retries exceeded for API call.');
+        }
+
+    </script>
+    <!-- Marked.js for rendering markdown output (e.g., bullet points) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+</html>
