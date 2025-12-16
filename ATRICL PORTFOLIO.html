@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATRICL® Strategic B2B Booklet</title>
+    <!-- Premium Font Stack -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,400&family=Noto+Sans+Devanagari:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* --- CORE PRINT SETTINGS --- */
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333; /* Dark workspace background */
+        }
+        
+        /* --- A3 SHEET LAYOUT --- */
+        .a3-sheet {
+            width: 420mm; 
+            height: 297mm;
+            background: #FFF;
+            margin: 30px auto;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* --- PAGE PANELS --- */
+        .panel {
+            width: 50%;
+            height: 100%;
+            padding: 45px; /* Increased padding for elegance */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* --- GUTTER MANAGEMENT (Print Safe Areas) --- */
+        .front-spread .panel-left { border-right: 1px dashed #DDD; padding-right: 55px; } /* Back Cover */
+        .front-spread .panel-right { padding-left: 55px; } /* Front Cover */
+        .inside-spread .panel-left { border-right: 1px dashed #DDD; padding-right: 55px; } /* Page 2 */
+        .inside-spread .panel-right { padding-left: 55px; } /* Page 3 */
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; margin: 0; color: #000; }
+        h1 { font-size: 3.8rem; line-height: 0.9; letter-spacing: -1px; margin-bottom: 5px; }
+        h2 { font-size: 2.2rem; margin-bottom: 25px; border-bottom: 4px solid #000; padding-bottom: 8px; display: inline-block; }
+        p { font-size: 13px; line-height: 1.5; color: #444; margin-bottom: 10px; }
+
+        /* --- STRATEGIC ELEMENTS --- */
+        
+        /* 1. The Trust Strip (GeM & Auth) */
+        .trust-strip {
+            background: #000;
+            color: #FFF;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Oswald';
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            margin: 40px -45px 0 -55px; /* Bleed to edge */
+            width: calc(100% + 100px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .gem-circle {
+            width: 28px; height: 28px;
+            background: #FFD700; /* Safety Yellow */
+            color: #000;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 9px;
+        }
+        .make-india-icon {
+            font-size: 18px;
+            color: #FF9933; /* Saffron color */
+        }
+
+        /* 2. The Solution Matrix (Optimized) */
+        .matrix-grid { display: grid; gap: 10px; } 
+        .matrix-card {
+            display: flex;
+            border: 1px solid #CCC;
+            transition: all 0.2s;
+            position: relative;
+            background: #FFF;
+        }
+        .matrix-head {
+            background: #111;
+            color: #FFF;
+            width: 135px;
+            padding: 8px 12px;
+            display: flex; flex-direction: column; justify-content: center;
+            text-align: right;
+        }
+        .matrix-head strong { font-family: 'Oswald'; font-size: 1rem; line-height: 1; letter-spacing: 0.5px; }
+        .matrix-head span { font-size: 9px; opacity: 0.8; margin-top: 3px; text-transform: uppercase; font-weight: 300; }
+        
+        .matrix-body {
+            padding: 8px 12px;
+            flex: 1;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .brand-list { 
+            font-weight: 700; 
+            font-size: 12px; 
+            color: #000; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+        }
+        .mini-logo { height: 16px; width: auto; vertical-align: middle; filter: grayscale(100%); }
+        .use-case { font-size: 10px; color: #555; font-style: italic; margin-top: 3px; }
+        
+        /* AMC Badge */
+        .amc-badge {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #FFD700;
+            color: #000;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 2px;
+            font-family: 'Oswald';
+        }
+
+        /* 3. Client Segments (Page 2) */
+        .client-segments-box {
+            background-color: #F4F4F4;
+            border-left: 5px solid #000;
+            padding: 20px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        .client-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 25px;
+            margin-top: 15px;
+        }
+        .client-group {
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+        .client-icon {
+            font-size: 22px;
+            line-height: 1;
+        }
+        .client-text strong {
+            font-family: 'Oswald';
+            font-size: 12px;
+            display: block;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+        .client-text span {
+            font-size: 10px;
+            color: #555;
+            line-height: 1.3;
+            display: block;
+        }
+
+        /* Timeline Infographic Styles */
+        .timeline-container {
+            position: relative;
+            margin-top: 20px; 
+            padding-left: 20px;
+            margin-bottom: 10px; 
+        }
+        .timeline-line {
+            position: absolute;
+            left: 9px;
+            top: 5px;
+            bottom: 25px;
+            width: 2px;
+            background: #DDD;
+            z-index: 0;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 12px;
+            padding-left: 35px;
+            z-index: 1;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #000;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            box-shadow: 0 0 0 3px #FFF; /* Border effect */
+        }
+        .timeline-title {
+            font-family: 'Oswald';
+            font-size: 1.1rem; 
+            margin-bottom: 2px;
+            display: block;
+            font-weight: 500;
+        }
+        .timeline-text {
+            margin: 0;
+            font-size: 12px; 
+            line-height: 1.3;
+            color: #444;
+        }
+
+        /* SAFETY INFOGRAPHIC BOX (Page 3) */
+        .safety-infographic {
+            background-color: #FFFBF0; /* Very light yellow tint */
+            border: 2px dashed #FFD700; 
+            padding: 12px;
+            margin-top: 20px;
+            position: relative;
+        }
+        .safety-header {
+            background: #FFD700;
+            color: #000;
+            display: inline-block;
+            padding: 4px 15px;
+            font-family: 'Oswald';
+            font-weight: 700;
+            font-size: 11px;
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            letter-spacing: 0.5px;
+        }
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px 10px; 
+            margin-top: 8px;
+        }
+        .safety-tip {
+            text-align: left;
+            display: flex;
+            align-items: start;
+            gap: 8px;
+        }
+        .safety-icon {
+            font-size: 16px;
+            min-width: 15px;
+        }
+        .safety-text {
+            font-size: 10px;
+            line-height: 1.3;
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* 4. Partner Logos */
+        .partner-logo-box {
+            border: 1px solid #EEE;
+            padding: 10px; 
+            text-align: center;
+            background-color: #FFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            transition: border-color 0.3s;
+        }
+        /* Highlight C&S box slightly */
+        .partner-cs { border: 2px solid #000; background: #FAFAFA; }
+        
+        .partner-logo-img {
+            max-width: 90%;
+            max-height: 45px; 
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+        .auth-tag {
+            background: #000;
+            color: #FFF;
+            font-size: 7px;
+            font-weight: 700;
+            padding: 3px 8px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: auto;
+            border-radius: 2px;
+        }
+        .brand-cat {
+            font-size: 8px; font-weight: 700; margin-top: 5px; color: #555; text-transform: uppercase;
+        }
+
+        /* 5. Founder's Note */
+        .founder-note {
+            background: #F4F4F4;
+            padding: 15px;
+            border-left: 4px solid #000;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            color: #222;
+        }
+        .founder-sig {
+            font-family: 'Oswald', sans-serif;
+            font-style: normal;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 5px;
+            text-transform: uppercase;
+            display: block;
+            color: #000;
+        }
+
+        /* 6. Vendor Registration Block */
+        .vendor-block {
+            margin-top: 20px;
+            border: 1px solid #CCC;
+            background-color: #FFF;
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .vendor-title {
+            font-family: 'Oswald'; 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            color: #777;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .vendor-data {
+            font-family: 'Roboto';
+            font-weight: 700;
+            font-size: 12px;
+            color: #000;
+        }
+
+        /* --- GRAPHICS --- */
+        .circuit-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#E0E0E0 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .content-layer { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+
+        /* CONSISTENT FOOTER */
+        .consistent-footer {
+            margin-top: auto;
+            border-top: 2px solid #000;
+            padding-top: 15px;
+            text-align: center;
+            font-size: 10px;
+            color: #333;
+        }
+        .footer-primary-row {
+            font-family: 'Oswald', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-address {
+            font-size: 10px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* SITE VISIT BADGE */
+        .site-visit-badge {
+            margin-top: 25px; 
+            border: 2px dashed #000; 
+            padding: 12px; 
+            display: inline-block; 
+            background: #FFD700; 
+            color: #000;
+            font-weight: 700;
+            font-size: 13px;
+            font-family: 'Oswald';
+            letter-spacing: 0.5px;
+        }
+        
+        /* HINDI TEXT */
+        .hindi-text {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.4rem;
+            color: #444;
+            margin-top: 8px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        /* EDITION TAG */
+        .edition-tag {
+            font-size: 9px;
+            font-weight: bold;
+            border: 1px solid #000;
+            padding: 3px 8px;
+            display: inline-block;
+            margin-top: 8px;
+            background: #FFF;
+        }
+
+        /* --- PAGE NUMBERS --- */
+        .page-num {
+            position: absolute;
+            bottom: 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #AAA;
+            letter-spacing: 1px;
+        }
+        .panel-left .page-num { left: 30px; }
+        .panel-right .page-num { right: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- SHEET 1: FRONT SPREAD (Prints Back Cover & Front Cover) -->
+    <div class="a3-sheet front-spread">
+        <div class="circuit-bg"></div>
+
+        <!-- PAGE 4: BACK COVER (Partner Ecosystem) -->
+        <div class="panel panel-left">
+            <div class="content-layer">
+                <h2>Our Partner Ecosystem</h2>
+                <p>We bridge the gap between India's manufacturing giants and your project requirements.</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                    
+                    <!-- C&S Electric -->
+                    <div class="partner-logo-box partner-cs">
+                        <img src="c&S LOGO.PNG" alt="C&S Electric" class="partner-logo-img">
+                        <div class="auth-tag">AUTH. SERVICE PARTNER (JH & BR)</div>
+                    </div>
+
+                    <!-- Polycab -->
+                    <div class="partner-logo-box">
+                        <img src="POLI.PNG" alt="Polycab" class="partner-logo-img">
+                        <div class="brand-cat">WIRES & CABLES</div>
+                    </div>
+
+                    <!-- Havells -->
+                    <div class="partner-logo-box">
+                        <img src="Havells_Logo.svg.PNG" alt="Havells" class="partner-logo-img">
+                        <div class="brand-cat">INDUSTRIAL ELECTRICALS</div>
+                    </div>
+
+                    <!-- Ledure -->
+                    <div class="partner-logo-box">
+                        <img src="ledure.JPG" alt="Ledure" class="partner-logo-img">
+                        <div class="brand-cat">SMART LIGHTING</div>
+                    </div>
+
+                    <!-- Greatwhite -->
+                    <div class="partner-logo-box">
+                        <img src="greate white.JPG" alt="Greatwhite" class="partner-logo-img">
+                        <div class="brand-cat">SWITCHGEAR & GEAR</div>
+                    </div>
+
+                    <!-- Paraflex -->
+                    <div class="partner-logo-box">
+                        <img src="paraflex.PNG" alt="Paraflex" class="partner-logo-img">
+                        <div class="brand-cat">CABLING SOLUTIONS</div>
+                    </div>
+
+                </div>
+
+                <!-- Founder's Note -->
+                <div class="founder-note">
+                    "We don't just supply products; we supply reliability. My personal guarantee stands behind every item we deliver."
+                    <span class="founder-sig">- Ankit Kumar, Founder</span>
+                </div>
+
+                <!-- NEW VENDOR REGISTRATION BLOCK -->
+                <div class="vendor-block">
+                    <div>
+                        <span class="vendor-title">GSTIN</span>
+                        <span class="vendor-data">20AAXHA7677Q1ZD</span>
+                    </div>
+                    <div style="border-left:1px solid #CCC; height:20px;"></div>
+                    <div>
+                        <span class="vendor-title">UDYAM / MSME</span>
+                        <span class="vendor-data">UDYAM-JH-20-0078975</span>
+                    </div>
+                    <div style="border-left:1px solid #CCC; height:20px;"></div>
+                    <div>
+                        <span class="vendor-title">STATUS</span>
+                        <span class="vendor-data">GeM Authorized</span>
+                    </div>
+                </div>
+
+                <div class="consistent-footer">
+                    <!-- DUAL QR CODE SECTION -->
+                    <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/918873752101" alt="WhatsApp" style="width: 45px; height: 45px; border: 2px solid #000;">
+                            <div style="text-align: left; font-size: 9px; line-height: 1.2;">
+                                <strong>CHAT ON</strong><br>WHATSAPP
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://maps.google.com/?q=647/D1+Ground+Floor+Sain+Path+Ranchi" alt="Google Maps" style="width: 45px; height: 45px; border: 2px solid #000;">
+                            <div style="text-align: left; font-size: 9px; line-height: 1.2;">
+                                <strong>LOCATE</strong><br>OFFICE
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-primary-row">
+                        <span>ATRICL®</span>
+                        <span>+91 88737 52101</span>
+                        <span>atricl001@gmail.com</span>
+                        <span>www.atricl.com</span>
+                    </div>
+                    <div class="footer-address">
+                        647/D1, Ground Floor, Sain Path, Opp. Premsons Honda Service Center, Near Kishroganj Chowk, Bhuiya Toli, Upper Bazar, Ranchi - 834001
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PAGE NUMBER -->
+            <div class="page-num">04</div>
+        </div>
+
+        <!-- PAGE 1: FRONT COVER (Brand Identity) -->
+        <div class="panel panel-right">
+            <div class="content-layer" style="justify-content: center;">
+                
+                <div style="text-align: left; margin-bottom: 50px;">
+                    <img src="ATRICL (2).JPEG" alt="ATRICL Logo" style="width: 160px; display: block; margin-bottom: 25px;">
+                    <div style="font-size: 13px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase;">Company Profile</div>
+                    <div class="edition-tag">2025-26 EDITION</div>
+                </div>
+
+                <h1>POWERING<br>YOUR PROGRESS.</h1>
+                <span class="hindi-text">आपका विश्वास, हमारी पहचान</span>
+                
+                <p style="font-size: 1.4rem; margin-top: 25px; font-weight: 300;">
+                    Supply • Service • Surveillance<br>
+                    <strong>Available Instantly. Engineered for Budget.</strong>
+                </p>
+
+                <!-- THE TRUST STRIP -->
+                <div class="trust-strip">
+                    <div class="trust-badge">
+                        <div class="gem-circle">GeM</div>
+                        <span>GeM & <strong>MSME REGISTERED</strong></span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="make-india-icon">🦁</span>
+                        <span>PROMOTING <strong>MAKE IN INDIA</strong></span>
+                    </div>
+                    <div class="trust-badge">
+                        <span>• &nbsp; C&S SERVICE PARTNER</span>
+                    </div>
+                </div>
+
+                <div class="site-visit-badge">
+                    ⚡ INDUSTRIAL CLIENTS: ASK FOR FREE SITE AUDIT
+                </div>
+
+                <div style="margin-top: 50px;">
+                    <p><strong>ATRICL®</strong> &nbsp;|&nbsp; Just a Call Away | <strong>+91 88737 52101</strong></p>
+                </div>
+            </div>
+            
+            <!-- PAGE NUMBER -->
+            <div class="page-num">01</div>
+        </div>
+    </div>
+
+    <!-- SHEET 2: INSIDE SPREAD (Value Prop + Matrix) -->
+    <div class="a3-sheet inside-spread">
+        <div class="circuit-bg"></div>
+
+        <!-- PAGE 2: INSIDE LEFT (Why Us & Industries) -->
+        <div class="panel panel-left">
+            <div class="content-layer">
+                <h2>Why Industry Leaders Choose ATRICL</h2>
+                
+                <!-- Process Infographic (7 Points) -->
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot">1</div>
+                        <span class="timeline-title">Rapid Dispatch Ecosystem</span>
+                        <p class="timeline-text">Ready stock ensures your site never waits.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot">2</div>
+                        <span class="timeline-title">Technical Mastery</span>
+                        <p class="timeline-text">We don't just sell, we solve. 8+ years experience in problem-solving.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot">3</div>
+                        <span class="timeline-title">Cost Optimization</span>
+                        <p class="timeline-text">We optimize BOMs to save costs without compromising quality.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot">4</div>
+                        <span class="timeline-title">Authorized Reliability</span>
+                        <p class="timeline-text">Official C&S Partner means valid warranties and expert repairs.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot">5</div>
+                        <span class="timeline-title">Compliance Ready</span>
+                        <p class="timeline-text">GST/GeM/MSME compliant billing for hassle-free audits.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot">6</div>
+                        <span class="timeline-title">Zero Counterfeit Policy</span>
+                        <p class="timeline-text">100% authentic sourcing directly from OEMs.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot">7</div>
+                        <span class="timeline-title">Dedicated B2B Support</span>
+                        <p class="timeline-text">Direct access to account managers, not call centers.</p>
+                    </div>
+                </div>
+
+                <!-- MOVED: CLIENT SEGMENTS (Grid Layout) -->
+                <div class="client-segments-box">
+                    <h3 style="font-size: 14px; margin: 0; padding-bottom: 5px; border-bottom: 1px solid #CCC;">SERVING CORE SECTORS IN JHARKHAND</h3>
+                    <div class="client-grid">
+                        <div class="client-group">
+                            <span class="client-icon">🏭</span>
+                            <div class="client-text">
+                                <strong>Industrial Units</strong>
+                                <span>Crushers, Rice Mills, Rolling Mills</span>
+                            </div>
+                        </div>
+                        <div class="client-group">
+                            <span class="client-icon">🏛️</span>
+                            <div class="client-text">
+                                <strong>Govt. Projects</strong>
+                                <span>PWD, Road Construction Boards</span>
+                            </div>
+                        </div>
+                        <div class="client-group">
+                            <span class="client-icon">🛒</span>
+                            <div class="client-text">
+                                <strong>Retail & Trade</strong>
+                                <span>Electrical Shops & Wholesalers</span>
+                            </div>
+                        </div>
+                        <div class="client-group">
+                            <span class="client-icon">🏥</span>
+                            <div class="client-text">
+                                <strong>Institutions</strong>
+                                <span>Hospitals, Commercial Complexes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOTES SECTION (Small) -->
+                <div class="notes-section-small">
+                    <strong style="font-family: 'Oswald'; font-size: 10px; text-transform: uppercase; color:#555;">TECHNICIAN / SAFETY NOTES:</strong>
+                    <div class="note-line-small"></div>
+                    <div class="note-line-small" style="border:none;"></div>
+                </div>
+
+                <div class="consistent-footer">
+                    <div class="footer-primary-row">
+                        <span>ATRICL®</span>
+                        <span>+91 88737 52101</span>
+                        <span>atricl001@gmail.com</span>
+                        <span>www.atricl.com</span>
+                    </div>
+                    <div class="footer-address">
+                        647/D1, Ground Floor, Sain Path, Opp. Premsons Honda Service Center, Near Kishroganj Chowk, Bhuiya Toli, Upper Bazar, Ranchi - 834001
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PAGE NUMBER -->
+            <div class="page-num">02</div>
+        </div>
+
+        <!-- PAGE 3: INSIDE RIGHT (Solution Matrix) -->
+        <div class="panel panel-right">
+            <div class="content-layer">
+                <h2>Specialized Solution Matrix</h2>
+                
+                <div class="matrix-grid">
+                    
+                    <!-- Item 1: Switchgear -->
+                    <div class="matrix-card">
+                        <div class="matrix-head">
+                            <strong>SWITCHGEAR</strong>
+                            <span>Protection</span>
+                        </div>
+                        <div class="matrix-body">
+                            <div class="brand-list">
+                                <img src="C&S LOGO.PNG" class="mini-logo"> C&S
+                                <img src="greate white.JPG" class="mini-logo" style="margin-left:5px;"> Greatwhite
+                            </div>
+                            <div class="use-case">MCB, MCCB, ACB, Relays | Application: Circuit Protection</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Modular Switches -->
+                    <div class="matrix-card">
+                        <div class="matrix-head">
+                            <strong>MODULAR</strong>
+                            <span>Switches</span>
+                        </div>
+                        <div class="matrix-body">
+                            <div class="brand-list">
+                                <img src="C&S LOGO.PNG" class="mini-logo"> C&S Electric
+                            </div>
+                            <div class="use-case">Premium Modular Switches & Accessories | Application: Resi & Comm</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Motor Control -->
+                    <div class="matrix-card">
+                        <div class="matrix-head">
+                            <strong>MOTOR CONTROL</strong>
+                            <span>Automation</span>
+                        </div>
+                        <div class="matrix-body">
+                            <div class="brand-list">
+                                <img src="C&S LOGO.PNG" class="mini-logo"> C&S
+                                <img src="Havells_Logo.svg.PNG" class="mini-logo" style="margin-left:5px;"> Havells
+                            </div>
+                            <div class="use-case"><strong>Motor Starters</strong>, Contactors, Overloads | Application: Industrial Motors</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4: CCTV -->
+                    <div class="matrix-card">
+                        <div class="matrix-head">
+                            <strong>CCTV</strong>
+                            <span>Surveillance</span>
+                        </div>
+                        <div class="matrix-body">
+                            <div class="brand-list">ATRICL Security Solutions</div>
+                            <div class="use-case">Supply, Installation & Maintenance </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Cables & Connection -->
+                    <div class="matrix-card">
+                        <div class="matrix-head">
+                            <strong>CABLES & LUGS</strong>
+                            <span>Connectivity</span>
+                        </div>
+                        <div class="matrix-body">
+                            <div class="brand-list">
+                                <img src="POLI.PNG" class="mini-logo"> Polycab
+                                <img src="paraflex.PNG" class="mini-logo" style="margin-left:5px;"> Paraflex
+                            </div>
+                            <div class="use-case">Power Cables, <strong>Cable Lugs</strong>, Glands | Application: Transmission</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Lighting -->
+                    <div class="matrix-card">
+                        <div class="matrix-head">
+                            <strong>LIGHTING</strong>
+                            <span>Efficiency</span>
+                        </div>
+                        <div class="matrix-body">
+                            <div class="brand-list">
+                                <img src="ledure.JPG" class="mini-logo"> LEDURE
+                                <img src="Havells_Logo.svg.PNG" class="mini-logo" style="margin-left:5px;"> Havells
+                            </div>
+                            <div class="use-case">Flood Lights, Street Lights | Application: Energy Saving</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 7: Spares & Misc -->
+                    <div class="matrix-card">
+                        <div class="matrix-head">
+                            <strong>SPARES & MISC</strong>
+                            <span>General</span>
+                        </div>
+                        <div class="matrix-body">
+                            <div class="brand-list">Leading Brands</div>
+                            <div class="use-case"><strong>Panel Spares</strong>, Hardware, Misc. Items | <span class="amc-badge">AMC AVAILABLE</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SAFETY INFOGRAPHIC (9 Points) -->
+                <div class="safety-infographic">
+                    <div class="safety-header">ATRICL SAFETY & QUALITY STANDARDS</div>
+                    <div class="safety-grid">
+                        <div class="safety-tip"><span class="safety-icon">⚠️</span> <div class="safety-text"><strong>Avoid Overload:</strong><br>Match MCB rating.</div></div>
+                        <div class="safety-tip"><span class="safety-icon">🛡️</span> <div class="safety-text"><strong>Genuine Parts:</strong><br>Only certified brands.</div></div>
+                        <div class="safety-tip"><span class="safety-icon">🔧</span> <div class="safety-text"><strong>Maintenance:</strong><br>Annual audits.</div></div>
+                        
+                        <div class="safety-tip"><span class="safety-icon">⚡</span> <div class="safety-text"><strong>Shock Proof:</strong><br>Install 30mA RCCB.</div></div>
+                        <div class="safety-tip"><span class="safety-icon">🔌</span> <div class="safety-text"><strong>Earthing:</strong><br>Resistance < 5Ω.</div></div>
+                        <div class="safety-tip"><span class="safety-icon">🔥</span> <div class="safety-text"><strong>Fire Safety:</strong><br>FRLS cables only.</div></div>
+
+                        <div class="safety-tip"><span class="safety-icon">💎</span> <div class="safety-text"><strong>Pure Copper:</strong><br>99.9% electrolytic.</div></div>
+                        <div class="safety-tip"><span class="safety-icon">🌧️</span> <div class="safety-text"><strong>IP Rating:</strong><br>IP65+ for outdoor.</div></div>
+                        <div class="safety-tip"><span class="safety-icon">🔗</span> <div class="safety-text"><strong>Termination:</strong><br>Crimped Lugs.</div></div>
+                    </div>
+                </div>
+
+                <div class="consistent-footer">
+                    <div class="footer-primary-row">
+                        <span>ATRICL®</span>
+                        <span>+91 88737 52101</span>
+                        <span>atricl001@gmail.com</span>
+                        <span>www.atricl.com</span>
+                    </div>
+                    <div class="footer-address">
+                        647/D1, Ground Floor, Sain Path, Opp. Premsons Honda Service Center, Near Kishroganj Chowk, Bhuiya Toli, Upper Bazar, Ranchi - 834001
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PAGE NUMBER -->
+            <div class="page-num">03</div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
