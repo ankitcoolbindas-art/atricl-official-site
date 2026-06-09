@@ -1,843 +1,674 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATRICL® Strategic B2B Booklet</title>
-    <!-- Premium Font Stack -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,400&family=Noto+Sans+Devanagari:wght@500&display=swap" rel="stylesheet">
+    <title>ATRICL | Next-Gen Electrical & Surveillance</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for futuristic typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Three.js for 3D Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        neonBlue: '#0077ff', /* Darker blue for light theme */
+                        neonOrange: '#e65c00', /* Darker orange for light theme */
+                        lightSpace: '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* --- CORE PRINT SETTINGS --- */
-        * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         body {
-            font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #333; /* Dark workspace background */
-        }
-        
-        /* --- A3 SHEET LAYOUT --- */
-        .a3-sheet {
-            width: 420mm; 
-            height: 297mm;
-            background: #FFF;
-            margin: 30px auto;
-            display: flex;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            overflow-x: hidden;
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* --- PAGE PANELS --- */
-        .panel {
-            width: 50%;
-            height: 100%;
-            padding: 45px; /* Increased padding for elegance */
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        /* --- GUTTER MANAGEMENT (Print Safe Areas) --- */
-        .front-spread .panel-left { border-right: 1px dashed #DDD; padding-right: 55px; } /* Back Cover */
-        .front-spread .panel-right { padding-left: 55px; } /* Front Cover */
-        .inside-spread .panel-left { border-right: 1px dashed #DDD; padding-right: 55px; } /* Page 2 */
-        .inside-spread .panel-right { padding-left: 55px; } /* Page 3 */
-
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; margin: 0; color: #000; }
-        h1 { font-size: 3.8rem; line-height: 0.9; letter-spacing: -1px; margin-bottom: 5px; }
-        h2 { font-size: 2.2rem; margin-bottom: 25px; border-bottom: 4px solid #000; padding-bottom: 8px; display: inline-block; }
-        p { font-size: 13px; line-height: 1.5; color: #444; margin-bottom: 10px; }
-
-        /* --- STRATEGIC ELEMENTS --- */
-        
-        /* 1. The Trust Strip (GeM & Auth) */
-        .trust-strip {
-            background: #000;
-            color: #FFF;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: 'Oswald';
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            margin: 40px -45px 0 -55px; /* Bleed to edge */
-            width: calc(100% + 100px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .gem-circle {
-            width: 28px; height: 28px;
-            background: #FFD700; /* Safety Yellow */
-            color: #000;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; font-size: 9px;
-        }
-        .make-india-icon {
-            font-size: 18px;
-            color: #FF9933; /* Saffron color */
-        }
-
-        /* 2. The Solution Matrix (Optimized) */
-        .matrix-grid { display: grid; gap: 10px; } 
-        .matrix-card {
-            display: flex;
-            border: 1px solid #CCC;
-            transition: all 0.2s;
-            position: relative;
-            background: #FFF;
-        }
-        .matrix-head {
-            background: #111;
-            color: #FFF;
-            width: 135px;
-            padding: 8px 12px;
-            display: flex; flex-direction: column; justify-content: center;
-            text-align: right;
-        }
-        .matrix-head strong { font-family: 'Oswald'; font-size: 1rem; line-height: 1; letter-spacing: 0.5px; }
-        .matrix-head span { font-size: 9px; opacity: 0.8; margin-top: 3px; text-transform: uppercase; font-weight: 300; }
-        
-        .matrix-body {
-            padding: 8px 12px;
-            flex: 1;
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .brand-list { 
-            font-weight: 700; 
-            font-size: 12px; 
-            color: #000; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px;
-        }
-        .mini-logo { height: 16px; width: auto; vertical-align: middle; filter: grayscale(100%); }
-        .use-case { font-size: 10px; color: #555; font-style: italic; margin-top: 3px; }
-        
-        /* AMC Badge */
-        .amc-badge {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #FFD700;
-            color: #000;
-            font-size: 9px;
-            font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 2px;
-            font-family: 'Oswald';
-        }
-
-        /* 3. Client Segments (Page 2) */
-        .client-segments-box {
-            background-color: #F4F4F4;
-            border-left: 5px solid #000;
-            padding: 20px;
-            margin-top: 25px;
-            margin-bottom: 25px;
-        }
-        .client-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px 25px;
-            margin-top: 15px;
-        }
-        .client-group {
-            display: flex;
-            align-items: start;
-            gap: 12px;
-        }
-        .client-icon {
-            font-size: 22px;
-            line-height: 1;
-        }
-        .client-text strong {
-            font-family: 'Oswald';
-            font-size: 12px;
-            display: block;
-            margin-bottom: 3px;
-            text-transform: uppercase;
-        }
-        .client-text span {
-            font-size: 10px;
-            color: #555;
-            line-height: 1.3;
-            display: block;
-        }
-
-        /* Timeline Infographic Styles */
-        .timeline-container {
-            position: relative;
-            margin-top: 20px; 
-            padding-left: 20px;
-            margin-bottom: 10px; 
-        }
-        .timeline-line {
-            position: absolute;
-            left: 9px;
-            top: 5px;
-            bottom: 25px;
-            width: 2px;
-            background: #DDD;
-            z-index: 0;
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 12px;
-            padding-left: 35px;
-            z-index: 1;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: 0;
+        /* 3D Canvas Background */
+        #canvas-container {
+            position: fixed;
             top: 0;
-            width: 20px;
-            height: 20px;
-            background: #000;
-            color: #FFF;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 11px;
-            font-weight: bold;
-            box-shadow: 0 0 0 3px #FFF; /* Border effect */
-        }
-        .timeline-title {
-            font-family: 'Oswald';
-            font-size: 1.1rem; 
-            margin-bottom: 2px;
-            display: block;
-            font-weight: 500;
-        }
-        .timeline-text {
-            margin: 0;
-            font-size: 12px; 
-            line-height: 1.3;
-            color: #444;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none; /* Let clicks pass through to HTML */
         }
 
-        /* SAFETY INFOGRAPHIC BOX (Page 3) */
-        .safety-infographic {
-            background-color: #FFFBF0; /* Very light yellow tint */
-            border: 2px dashed #FFD700; 
-            padding: 12px;
-            margin-top: 20px;
-            position: relative;
-        }
-        .safety-header {
-            background: #FFD700;
-            color: #000;
-            display: inline-block;
-            padding: 4px 15px;
-            font-family: 'Oswald';
-            font-weight: 700;
-            font-size: 11px;
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            letter-spacing: 0.5px;
-        }
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px 10px; 
-            margin-top: 8px;
-        }
-        .safety-tip {
-            text-align: left;
-            display: flex;
-            align-items: start;
-            gap: 8px;
-        }
-        .safety-icon {
-            font-size: 16px;
-            min-width: 15px;
-        }
-        .safety-text {
-            font-size: 10px;
-            line-height: 1.3;
-            font-weight: 500;
-            color: #333;
+        /* Glassmorphism utilities - Light Mode */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 119, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* 4. Partner Logos */
-        .partner-logo-box {
-            border: 1px solid #EEE;
-            padding: 10px; 
-            text-align: center;
-            background-color: #FFF;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100px;
-            transition: border-color 0.3s;
+        .glass-panel:hover {
+            border-color: rgba(0, 119, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 119, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .glass-panel-orange:hover {
+            border-color: rgba(230, 92, 0, 0.5);
+            box-shadow: 0 8px 32px rgba(230, 92, 0, 0.15);
+        }
+
+        /* Text Gradients */
+        .text-glow-blue {
+            text-shadow: 0 0 10px rgba(0, 119, 255, 0.3);
         }
         
-        .partner-logo-img {
-            max-width: 90%;
-            max-height: 45px; 
-            object-fit: contain;
-            margin-bottom: 5px;
-        }
-        .brand-cat {
-            font-size: 8px; font-weight: 700; margin-top: 5px; color: #555; text-transform: uppercase;
+        .text-glow-orange {
+            text-shadow: 0 0 10px rgba(230, 92, 0, 0.3);
         }
 
-        /* 5. Founder's Note */
-        .founder-note {
-            background: #F4F4F4;
-            padding: 15px;
-            border-left: 4px solid #000;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            color: #222;
-        }
-        .founder-sig {
-            font-family: 'Oswald', sans-serif;
-            font-style: normal;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-top: 5px;
-            text-transform: uppercase;
-            display: block;
-            color: #000;
+        .gradient-text {
+            background: linear-gradient(90deg, #0077ff, #e65c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* 6. Vendor Registration Block */
-        .vendor-block {
-            margin-top: 20px;
-            border: 1px solid #CCC;
-            background-color: #FFF;
-            padding: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
         }
-        .vendor-title {
-            font-family: 'Oswald'; 
-            font-size: 10px; 
-            text-transform: uppercase; 
-            color: #777;
-            display: block;
-            margin-bottom: 3px;
-        }
-        .vendor-data {
-            font-family: 'Roboto';
-            font-weight: 700;
-            font-size: 12px;
-            color: #000;
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* --- GRAPHICS --- */
-        .circuit-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(#E0E0E0 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.4;
-            z-index: 0;
-            pointer-events: none;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .content-layer { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
-
-        /* CONSISTENT FOOTER */
-        .consistent-footer {
-            margin-top: auto;
-            border-top: 2px solid #000;
-            padding-top: 15px;
-            text-align: center;
-            font-size: 10px;
-            color: #333;
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
         }
-        .footer-primary-row {
-            font-family: 'Oswald', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .footer-address {
-            font-size: 10px;
-            color: #555;
-            line-height: 1.4;
+        ::-webkit-scrollbar-thumb {
+            background: #0077ff;
+            border-radius: 4px;
         }
 
-        /* SITE VISIT BADGE */
-        .site-visit-badge {
-            margin-top: 25px; 
-            border: 2px dashed #000; 
-            padding: 12px; 
-            display: inline-block; 
-            background: #FFD700; 
-            color: #000;
-            font-weight: 700;
-            font-size: 13px;
-            font-family: 'Oswald';
-            letter-spacing: 0.5px;
+        /* Tab Transition */
+        .tab-content {
+            transition: opacity 0.3s ease-in-out;
         }
-        
-        /* HINDI TEXT */
-        .hindi-text {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 1.4rem;
-            color: #444;
-            margin-top: 8px;
-            display: block;
-            font-weight: 500;
-        }
-        
-        /* EDITION TAG */
-        .edition-tag {
-            font-size: 9px;
-            font-weight: bold;
-            border: 1px solid #000;
-            padding: 3px 8px;
-            display: inline-block;
-            margin-top: 8px;
-            background: #FFF;
-        }
-
-        /* --- PAGE NUMBERS --- */
-        .page-num {
-            position: absolute;
-            bottom: 20px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            color: #AAA;
-            letter-spacing: 1px;
-        }
-        .panel-left .page-num { left: 30px; }
-        .panel-right .page-num { right: 30px; }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-neonBlue selection:text-white">
 
-    <!-- SHEET 1: FRONT SPREAD (Prints Back Cover & Front Cover) -->
-    <div class="a3-sheet front-spread">
-        <div class="circuit-bg"></div>
+    <!-- 3D Background Container -->
+    <div id="canvas-container"></div>
 
-        <!-- PAGE 4: BACK COVER (Partner Ecosystem) -->
-        <div class="panel panel-left">
-            <div class="content-layer">
-                <h2>Our Partner Ecosystem</h2>
-                <p>We bridge the gap between India's manufacturing giants and your project requirements.</p>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
-                    
-                    <!-- C&S Electric -->
-                    <div class="partner-logo-box">
-                        <img src="c&S LOGO.PNG" alt="C&S Electric" class="partner-logo-img">
-                        <div class="brand-cat">SWITCHGEAR & CONTROL</div>
-                    </div>
-
-                    <!-- Polycab -->
-                    <div class="partner-logo-box">
-                        <img src="POLI.PNG" alt="Polycab" class="partner-logo-img">
-                        <div class="brand-cat">WIRES & CABLES</div>
-                    </div>
-
-                    <!-- Havells -->
-                    <div class="partner-logo-box">
-                        <img src="Havells_Logo.svg.PNG" alt="Havells" class="partner-logo-img">
-                        <div class="brand-cat">INDUSTRIAL ELECTRICALS</div>
-                    </div>
-
-                    <!-- Ledure -->
-                    <div class="partner-logo-box">
-                        <img src="ledure.JPG" alt="Ledure" class="partner-logo-img">
-                        <div class="brand-cat">SMART LIGHTING</div>
-                    </div>
-
-                    <!-- Greatwhite -->
-                    <div class="partner-logo-box">
-                        <img src="greate white.JPG" alt="Greatwhite" class="partner-logo-img">
-                        <div class="brand-cat">SWITCHGEAR & GEAR</div>
-                    </div>
-
-                    <!-- Paraflex -->
-                    <div class="partner-logo-box">
-                        <img src="paraflex.PNG" alt="Paraflex" class="partner-logo-img">
-                        <div class="brand-cat">CABLING SOLUTIONS</div>
-                    </div>
-
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 glass-panel border-b-0 border-t-0 border-l-0 border-r-0 rounded-none bg-white/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer">
+                    <!-- Added mix-blend-multiply to blend the white background seamlessly into the design -->
+                    <img src="Gemini_Generated_Image_xzncybxzncybxznc.jpg" alt="ATRICL Logo" class="h-14 w-auto mix-blend-multiply opacity-95 hover:opacity-100 transition-opacity">
                 </div>
-
-                <!-- Founder's Note -->
-                <div class="founder-note">
-                    "We don't just supply products; we supply reliability. My personal guarantee stands behind every item we deliver."
-                    <span class="founder-sig">- Ankit Kumar, Founder</span>
-                </div>
-
-                <!-- NEW VENDOR REGISTRATION BLOCK -->
-                <div class="vendor-block">
-                    <div>
-                        <span class="vendor-title">GSTIN</span>
-                        <span class="vendor-data">20AAXHA7677Q1ZD</span>
-                    </div>
-                    <div style="border-left:1px solid #CCC; height:20px;"></div>
-                    <div>
-                        <span class="vendor-title">UDYAM / MSME</span>
-                        <span class="vendor-data">UDYAM-JH-20-0078975</span>
-                    </div>
-                    <div style="border-left:1px solid #CCC; height:20px;"></div>
-                    <div>
-                        <span class="vendor-title">STATUS</span>
-                        <span class="vendor-data">GeM Authorized</span>
-                    </div>
-                </div>
-
-                <div class="consistent-footer">
-                    <!-- DUAL QR CODE SECTION -->
-                    <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 10px;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/918873752101" alt="WhatsApp" style="width: 45px; height: 45px; border: 2px solid #000;">
-                            <div style="text-align: left; font-size: 9px; line-height: 1.2;">
-                                <strong>CHAT ON</strong><br>WHATSAPP
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://maps.google.com/?q=647/D1+Ground+Floor+Sain+Path+Ranchi" alt="Google Maps" style="width: 45px; height: 45px; border: 2px solid #000;">
-                            <div style="text-align: left; font-size: 9px; line-height: 1.2;">
-                                <strong>LOCATE</strong><br>OFFICE
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-primary-row">
-                        <span>ATRICL®</span>
-                        <span>+91 88737 52101</span>
-                        <span>atricl001@gmail.com</span>
-                        <span>www.atricl.com</span>
-                    </div>
-                    <div class="footer-address">
-                        647/D1, Ground Floor, Sain Path, Opp. Premsons Honda Service Center, Near Kishroganj Chowk, Bhuiya Toli, Upper Bazar, Ranchi - 834001
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-neonBlue transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-widest">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-neonBlue transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-widest">About</a>
+                        <a href="#services" class="text-gray-700 hover:text-neonBlue transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-widest">Services</a>
+                        <a href="#knowledge" class="text-gray-700 hover:text-neonBlue transition-colors px-3 py-2 rounded-md text-sm font-bold uppercase tracking-widest">Knowledge Hub</a>
+                        <a href="#contact" class="border-2 border-neonBlue text-neonBlue hover:bg-neonBlue hover:text-white transition-all px-5 py-2 rounded-full text-sm font-bold uppercase tracking-widest">Partner With Us</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- PAGE NUMBER -->
-            <div class="page-num">04</div>
         </div>
+    </nav>
 
-        <!-- PAGE 1: FRONT COVER (Brand Identity) -->
-        <div class="panel panel-right">
-            <div class="content-layer" style="justify-content: center;">
-                
-                <div style="text-align: left; margin-bottom: 50px;">
-                    <img src="ATRICL (2).JPEG" alt="ATRICL Logo" style="width: 160px; display: block; margin-bottom: 25px;">
-                    <div style="font-size: 13px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase;">Company Profile</div>
-                    <div class="edition-tag">2025-26 EDITION</div>
-                </div>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-neonOrange bg-orange-50 text-neonOrange text-xs font-bold tracking-[0.2em] uppercase shadow-sm animate-pulse">
+                Authorized GeM Supplier
+            </div>
+            
+            <h1 class="font-orbitron text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-6 leading-tight">
+                POWERING <br/>
+                <span class="gradient-text">TOMORROW</span>
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-gray-600 font-medium mb-8">
+                Advanced Electrical Infrastructure & Intelligent Surveillance Systems for Industries & Projects across <span class="text-gray-900 font-bold">Jharkhand & Bihar</span>.
+            </p>
 
-                <h1>POWERING<br>YOUR PROGRESS.</h1>
-                <span class="hindi-text">आपका विश्वास, हमारी पहचान</span>
-                
-                <p style="font-size: 1.4rem; margin-top: 25px; font-weight: 300;">
-                    Supply • Service • Surveillance<br>
-                    <strong>Available Instantly. Engineered for Budget.</strong>
+            <div class="mb-10 reveal active">
+                <p class="inline-block px-6 py-3 rounded-xl bg-white border border-gray-200 font-orbitron text-neonBlue tracking-widest text-sm md:text-base italic shadow-lg">
+                    "We don't just supply products, we supply reliability."
                 </p>
-
-                <!-- THE TRUST STRIP -->
-                <div class="trust-strip">
-                    <div class="trust-badge">
-                        <div class="gem-circle">GeM</div>
-                        <span>GeM & <strong>MSME REGISTERED</strong></span>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="make-india-icon">🦁</span>
-                        <span>PROMOTING <strong>MAKE IN INDIA</strong></span>
-                    </div>
-                    <div class="trust-badge">
-                        <span>• &nbsp; 100% GENUINE PRODUCTS</span>
-                    </div>
-                </div>
-
-                <div class="site-visit-badge">
-                    ⚡ INDUSTRIAL CLIENTS: ASK FOR FREE SITE AUDIT
-                </div>
-
-                <div style="margin-top: 50px;">
-                    <p><strong>ATRICL®</strong> &nbsp;|&nbsp; Just a Call Away | <strong>+91 88737 52101</strong></p>
-                </div>
             </div>
             
-            <!-- PAGE NUMBER -->
-            <div class="page-num">01</div>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="#services" class="group relative px-8 py-4 bg-white overflow-hidden rounded-full border-2 border-neonBlue text-neonBlue font-bold tracking-widest uppercase transition-all hover:bg-neonBlue hover:text-white shadow-[0_4px_15px_rgba(0,119,255,0.2)]">
+                    <span class="relative z-10">Explore Solutions</span>
+                </a>
+                <a href="#about" class="px-8 py-4 bg-gray-100 rounded-full border border-gray-300 text-gray-800 font-bold tracking-widest uppercase hover:bg-gray-200 hover:text-gray-900 transition-all shadow-sm">
+                    Our Legacy
+                </a>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fa-solid fa-chevron-down text-neonBlue text-2xl opacity-70"></i>
+            </div>
         </div>
+    </section>
+
+    <!-- Floating Contact Widgets -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <a href="https://wa.me/918873752101" target="_blank" class="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center text-white text-3xl shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:+918873752101" class="w-14 h-14 rounded-full bg-neonBlue flex items-center justify-center text-white text-2xl shadow-[0_4px_15px_rgba(0,119,255,0.4)] hover:scale-110 transition-transform duration-300" aria-label="Call Us">
+            <i class="fa-solid fa-phone"></i>
+        </a>
     </div>
 
-    <!-- SHEET 2: INSIDE SPREAD (Value Prop + Matrix) -->
-    <div class="a3-sheet inside-spread">
-        <div class="circuit-bg"></div>
-
-        <!-- PAGE 2: INSIDE LEFT (Why Us & Industries) -->
-        <div class="panel panel-left">
-            <div class="content-layer">
-                <h2>Why Industry Leaders Choose ATRICL</h2>
+    <!-- About Section -->
+    <section id="about" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-3xl p-8 md:p-16 reveal relative overflow-hidden bg-white/80">
+                <!-- Decorative background glow -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-100 rounded-full filter blur-[80px] opacity-60 pointer-events-none"></div>
                 
-                <!-- Process Infographic (7 Points) -->
-                <div class="timeline-container">
-                    <div class="timeline-line"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <div>
+                        <h2 class="font-orbitron text-3xl md:text-5xl font-bold mb-6 text-gray-900">
+                            EST. <span class="text-neonBlue">2024</span>
+                        </h2>
+                        <h3 class="text-2xl text-gray-700 mb-6 font-medium">Founded by <span class="text-gray-900 font-bold">Ankit Kumar</span></h3>
+                        <p class="text-gray-600 leading-relaxed mb-6 font-medium">
+                            ATRICL was born with a singular vision: to revolutionize the infrastructure of tomorrow. We are not just suppliers; we are architects of power and security. Serving the industrial and commercial sectors across Jharkhand and Bihar, we deliver uncompromising quality.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-8 font-medium">
+                            As a proud registered supplier on the Government e-Marketplace (GeM), we are trusted by state and central institutions to power critical infrastructure projects and secure vital assets.
+                        </p>
+                        <div class="flex gap-4">
+                            <div class="px-4 py-2 border border-gray-200 rounded-lg bg-white shadow-sm">
+                                <span class="block text-neonBlue font-orbitron font-bold text-xl">100%</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-wider font-bold">Compliance</span>
+                            </div>
+                            <div class="px-4 py-2 border border-gray-200 rounded-lg bg-white shadow-sm">
+                                <span class="block text-neonOrange font-orbitron font-bold text-xl">2</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-wider font-bold">Core Verticals</span>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="timeline-item">
-                        <div class="timeline-dot">1</div>
-                        <span class="timeline-title">Rapid Dispatch Ecosystem</span>
-                        <p class="timeline-text">Ready stock ensures your site never waits.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot">2</div>
-                        <span class="timeline-title">Technical Mastery</span>
-                        <p class="timeline-text">We don't just sell, we solve. 8+ years experience in problem-solving.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot">3</div>
-                        <span class="timeline-title">Cost Optimization</span>
-                        <p class="timeline-text">We optimize BOMs to save costs without compromising quality.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot">4</div>
-                        <span class="timeline-title">Guaranteed Reliability</span>
-                        <p class="timeline-text">Authentic sourcing ensures valid OEM warranties and dependable support.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot">5</div>
-                        <span class="timeline-title">Compliance Ready</span>
-                        <p class="timeline-text">GST/GeM/MSME compliant billing for hassle-free audits.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot">6</div>
-                        <span class="timeline-title">Zero Counterfeit Policy</span>
-                        <p class="timeline-text">100% authentic sourcing directly from OEMs.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot">7</div>
-                        <span class="timeline-title">Dedicated B2B Support</span>
-                        <p class="timeline-text">Direct access to account managers, not call centers.</p>
-                    </div>
-                </div>
-
-                <!-- MOVED: CLIENT SEGMENTS (Grid Layout) -->
-                <div class="client-segments-box">
-                    <h3 style="font-size: 14px; margin: 0; padding-bottom: 5px; border-bottom: 1px solid #CCC;">SERVING CORE SECTORS IN JHARKHAND</h3>
-                    <div class="client-grid">
-                        <div class="client-group">
-                            <span class="client-icon">🏭</span>
-                            <div class="client-text">
-                                <strong>Industrial Units</strong>
-                                <span>Crushers, Rice Mills, Rolling Mills</span>
-                            </div>
-                        </div>
-                        <div class="client-group">
-                            <span class="client-icon">🏛️</span>
-                            <div class="client-text">
-                                <strong>Govt. Projects</strong>
-                                <span>PWD, Road Construction Boards</span>
-                            </div>
-                        </div>
-                        <div class="client-group">
-                            <span class="client-icon">🛒</span>
-                            <div class="client-text">
-                                <strong>Retail & Trade</strong>
-                                <span>Electrical Shops & Wholesalers</span>
-                            </div>
-                        </div>
-                        <div class="client-group">
-                            <span class="client-icon">🏥</span>
-                            <div class="client-text">
-                                <strong>Institutions</strong>
-                                <span>Hospitals, Commercial Complexes</span>
-                            </div>
+                    <div class="relative h-full min-h-[300px] rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden flex items-center justify-center group shadow-inner">
+                        <!-- Abstract representation of the founder/company vision -->
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-700 mix-blend-multiply"></div>
+                        <div class="relative z-10 text-center p-8 bg-white/60 backdrop-blur-sm rounded-xl border border-white">
+                            <i class="fa-solid fa-microchip text-6xl text-neonBlue mb-4 drop-shadow-md"></i>
+                            <h4 class="font-orbitron text-xl font-bold tracking-widest text-gray-900">ENGINEERED FOR EXCELLENCE</h4>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- NOTES SECTION (Small) -->
-                <div class="notes-section-small">
-                    <strong style="font-family: 'Oswald'; font-size: 10px; text-transform: uppercase; color:#555;">TECHNICIAN / SAFETY NOTES:</strong>
-                    <div class="note-line-small"></div>
-                    <div class="note-line-small" style="border:none;"></div>
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-orbitron text-4xl md:text-5xl font-bold mb-4 text-gray-900">OUR <span class="text-neonBlue">SYSTEMS</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto font-medium">Comprehensive solutions bridging high-voltage electrical infrastructure with next-generation surveillance matrixes.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Electrical Supply -->
+                <div class="glass-panel rounded-2xl p-8 reveal group bg-white/90">
+                    <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 border border-blue-200 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                        <i class="fa-solid fa-bolt text-2xl text-neonBlue"></i>
+                    </div>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3 text-gray-900">Electrical Supply</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4 font-medium">
+                        End-to-end supply of premium electrical components for industries and building projects. We provide robust solutions designed for extreme durability and efficiency.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-700 font-semibold">
+                        <li><i class="fa-solid fa-angle-right text-neonBlue mr-2"></i> Industrial Lighting Systems</li>
+                        <li><i class="fa-solid fa-angle-right text-neonBlue mr-2"></i> Heavy-Duty Cables & Wires</li>
+                        <li><i class="fa-solid fa-angle-right text-neonBlue mr-2"></i> Advanced Switchgears</li>
+                        <li><i class="fa-solid fa-angle-right text-neonBlue mr-2"></i> Premium Electrical Switches</li>
+                    </ul>
                 </div>
 
-                <div class="consistent-footer">
-                    <div class="footer-primary-row">
-                        <span>ATRICL®</span>
-                        <span>+91 88737 52101</span>
-                        <span>atricl001@gmail.com</span>
-                        <span>www.atricl.com</span>
+                <!-- Surveillance -->
+                <div class="glass-panel glass-panel-orange rounded-2xl p-8 reveal group bg-white/90">
+                    <div class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-6 border border-orange-200 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                        <i class="fa-solid fa-video text-2xl text-neonOrange"></i>
                     </div>
-                    <div class="footer-address">
-                        647/D1, Ground Floor, Sain Path, Opp. Premsons Honda Service Center, Near Kishroganj Chowk, Bhuiya Toli, Upper Bazar, Ranchi - 834001
+                    <h3 class="font-orbitron text-2xl font-bold mb-3 text-gray-900">Surveillance Matrix</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4 font-medium">
+                        State-of-the-art security integration. Our CCTV vertical ensures absolute situational awareness for commercial buildings, factories, and government compounds.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-700 font-semibold">
+                        <li><i class="fa-solid fa-angle-right text-neonOrange mr-2"></i> IP & Analog CCTV Systems</li>
+                        <li><i class="fa-solid fa-angle-right text-neonOrange mr-2"></i> Network Video Recorders (NVR)</li>
+                        <li><i class="fa-solid fa-angle-right text-neonOrange mr-2"></i> Remote Monitoring Setup</li>
+                        <li><i class="fa-solid fa-angle-right text-neonOrange mr-2"></i> Perimeter Security Analytics</li>
+                    </ul>
+                </div>
+
+                <!-- Maintenance -->
+                <div class="glass-panel rounded-2xl p-8 reveal group md:col-span-2 lg:col-span-1 border-t-4 border-t-gray-300 bg-white/90">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-6 border border-gray-200 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                        <i class="fa-solid fa-screwdriver-wrench text-2xl text-gray-700"></i>
+                    </div>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3 text-gray-900">Maintenance Operations</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed font-medium">
+                        Beyond supply, we ensure your infrastructure runs flawlessly. Our rapid-response maintenance teams across Jharkhand and Bihar guarantee minimal downtime for your critical electrical and security systems.
+                    </p>
+                </div>
+
+                <!-- GeM & Gov -->
+                <div class="glass-panel rounded-2xl p-8 reveal group md:col-span-2 lg:col-span-1 bg-gradient-to-br from-white to-blue-50 border-blue-200 shadow-md">
+                    <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-6 border border-neonBlue group-hover:rotate-180 transition-transform duration-700 shadow-sm">
+                        <i class="fa-solid fa-building-columns text-2xl text-neonBlue"></i>
+                    </div>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3 text-gray-900">Government & Institutional</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4 font-medium">
+                        As a registered GeM supplier, we streamline procurement for government bodies, offering compliant, standardized, and highly vetted electrical and surveillance products.
+                    </p>
+                    <div class="inline-block mt-2 text-xs font-bold bg-neonBlue text-white px-3 py-1 rounded shadow-sm">GeM AUTHORIZED</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Geographic Footprint -->
+    <section class="pt-20 pb-12 relative z-10 bg-white/60 backdrop-blur-md overflow-hidden border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="font-orbitron text-2xl md:text-3xl font-bold mb-8 tracking-[0.3em] uppercase text-gray-400">
+                Operating Matrix
+            </h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
+                <div class="relative group">
+                    <h3 class="text-4xl md:text-6xl font-black font-orbitron text-transparent border-text group-hover:text-gray-900 transition-colors duration-300" style="-webkit-text-stroke: 1px rgba(0,0,0,0.15);">JHARKHAND</h3>
+                    <div class="absolute -inset-4 bg-blue-100 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                </div>
+                <div class="hidden md:block w-px h-16 bg-gradient-to-b from-transparent via-gray-300 to-transparent"></div>
+                <div class="relative group">
+                    <h3 class="text-4xl md:text-6xl font-black font-orbitron text-transparent border-text group-hover:text-gray-900 transition-colors duration-300" style="-webkit-text-stroke: 1px rgba(0,0,0,0.15);">BIHAR</h3>
+                    <div class="absolute -inset-4 bg-orange-100 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Base Section (Tabbed Interface) -->
+    <section id="knowledge" class="py-24 relative z-10 bg-gray-50/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="font-orbitron text-4xl md:text-5xl font-bold mb-4 text-gray-900">KNOWLEDGE <span class="text-neonBlue">HUB</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto font-medium">Technical resources, maintenance guidelines, and expert insights for modern infrastructure.</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex justify-center mb-8 reveal">
+                <div class="inline-flex rounded-full bg-white border border-gray-200 p-1 shadow-sm">
+                    <button onclick="switchTab('tab-electrical')" id="btn-tab-electrical" class="kb-tab-btn active px-6 py-3 rounded-full text-sm md:text-base font-bold font-orbitron uppercase tracking-wider transition-all bg-blue-50 text-neonBlue border border-neonBlue shadow-sm">
+                        <i class="fa-solid fa-bolt mr-2"></i> Electrical Center
+                    </button>
+                    <button onclick="switchTab('tab-surveillance')" id="btn-tab-surveillance" class="kb-tab-btn px-6 py-3 rounded-full text-sm md:text-base font-bold font-orbitron uppercase tracking-wider transition-all text-gray-500 border border-transparent hover:bg-gray-100">
+                        <i class="fa-solid fa-video mr-2"></i> CCTV Surveillance
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content: Electrical -->
+            <div id="tab-electrical" class="kb-tab-content reveal">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                        <div class="text-neonBlue mb-4"><i class="fa-solid fa-book-open text-3xl"></i></div>
+                        <h4 class="font-orbitron font-bold text-gray-900 mb-2">Switchgear Maintenance Guide</h4>
+                        <p class="text-gray-600 text-sm mb-4">Best practices for testing and maintaining industrial switchgears to prevent operational downtime.</p>
+                        <a href="#" class="text-neonBlue text-sm font-bold uppercase tracking-wider hover:underline flex items-center gap-1">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                        <div class="text-neonBlue mb-4"><i class="fa-solid fa-file-contract text-3xl"></i></div>
+                        <h4 class="font-orbitron font-bold text-gray-900 mb-2">Cable Load Standards</h4>
+                        <p class="text-gray-600 text-sm mb-4">A comprehensive technical sheet for selecting the correct heavy-duty cables based on voltage requirements.</p>
+                        <a href="#" class="text-neonBlue text-sm font-bold uppercase tracking-wider hover:underline flex items-center gap-1">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                        <div class="text-neonBlue mb-4"><i class="fa-solid fa-lightbulb text-3xl"></i></div>
+                        <h4 class="font-orbitron font-bold text-gray-900 mb-2">Industrial LED Upgrades</h4>
+                        <p class="text-gray-600 text-sm mb-4">Calculate energy savings and understand the ROI of upgrading to 2026-compliant industrial lighting.</p>
+                        <a href="#" class="text-neonBlue text-sm font-bold uppercase tracking-wider hover:underline flex items-center gap-1">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Surveillance -->
+            <div id="tab-surveillance" class="kb-tab-content hidden reveal">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                        <div class="text-neonOrange mb-4"><i class="fa-solid fa-network-wired text-3xl"></i></div>
+                        <h4 class="font-orbitron font-bold text-gray-900 mb-2">IP vs. Analog Cameras</h4>
+                        <p class="text-gray-600 text-sm mb-4">A breakdown of network requirements, resolution differences, and scalability for modern setups.</p>
+                        <a href="#" class="text-neonOrange text-sm font-bold uppercase tracking-wider hover:underline flex items-center gap-1">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                        <div class="text-neonOrange mb-4"><i class="fa-solid fa-hard-drive text-3xl"></i></div>
+                        <h4 class="font-orbitron font-bold text-gray-900 mb-2">NVR Storage Calculations</h4>
+                        <p class="text-gray-600 text-sm mb-4">Learn how to accurately predict hard drive requirements based on camera count, resolution, and retention days.</p>
+                        <a href="#" class="text-neonOrange text-sm font-bold uppercase tracking-wider hover:underline flex items-center gap-1">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                        <div class="text-neonOrange mb-4"><i class="fa-solid fa-shield-halved text-3xl"></i></div>
+                        <h4 class="font-orbitron font-bold text-gray-900 mb-2">Perimeter Security Analytics</h4>
+                        <p class="text-gray-600 text-sm mb-4">Implementing AI-driven line-crossing and intrusion detection to reduce false alarms in factory zones.</p>
+                        <a href="#" class="text-neonOrange text-sm font-bold uppercase tracking-wider hover:underline flex items-center gap-1">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
             
-            <!-- PAGE NUMBER -->
-            <div class="page-num">02</div>
         </div>
+    </section>
 
-        <!-- PAGE 3: INSIDE RIGHT (Solution Matrix) -->
-        <div class="panel panel-right">
-            <div class="content-layer">
-                <h2>Specialized Solution Matrix</h2>
+    <!-- Footer / Contact -->
+    <footer id="contact" class="pt-24 pb-12 relative z-10 bg-white/90 backdrop-blur-xl border-t border-gray-200 shadow-[0_-10px_30px_rgba(0,0,0,0.02)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <!-- Added mix-blend-multiply to sync footer logo with the theme -->
+                    <img src="Gemini_Generated_Image_xzncybxzncybxznc.jpg" alt="ATRICL Logo" class="h-20 w-auto mb-6 mix-blend-multiply opacity-95">
+                    <p class="text-gray-600 mb-6 max-w-sm font-medium">
+                        Defining the 2026 standard for electrical supply, maintenance, and advanced surveillance architectures.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-neonBlue hover:border-neonBlue hover:bg-blue-50 transition-colors">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-neonBlue hover:border-neonBlue hover:bg-blue-50 transition-colors">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
                 
-                <div class="matrix-grid">
-                    
-                    <!-- Item 1: Switchgear -->
-                    <div class="matrix-card">
-                        <div class="matrix-head">
-                            <strong>SWITCHGEAR</strong>
-                            <span>Protection</span>
-                        </div>
-                        <div class="matrix-body">
-                            <div class="brand-list">
-                                <img src="C&S LOGO.PNG" class="mini-logo"> C&S
-                                <img src="greate white.JPG" class="mini-logo" style="margin-left:5px;"> Greatwhite
-                            </div>
-                            <div class="use-case">MCB, MCCB, ACB, Relays | Application: Circuit Protection</div>
-                        </div>
-                    </div>
-
-                    <!-- Item 2: Modular Switches -->
-                    <div class="matrix-card">
-                        <div class="matrix-head">
-                            <strong>MODULAR</strong>
-                            <span>Switches</span>
-                        </div>
-                        <div class="matrix-body">
-                            <div class="brand-list">
-                                <img src="C&S LOGO.PNG" class="mini-logo"> C&S Electric
-                            </div>
-                            <div class="use-case">Premium Modular Switches & Accessories | Application: Resi & Comm</div>
-                        </div>
-                    </div>
-
-                    <!-- Item 3: Motor Control -->
-                    <div class="matrix-card">
-                        <div class="matrix-head">
-                            <strong>MOTOR CONTROL</strong>
-                            <span>Automation</span>
-                        </div>
-                        <div class="matrix-body">
-                            <div class="brand-list">
-                                <img src="C&S LOGO.PNG" class="mini-logo"> C&S
-                                <img src="Havells_Logo.svg.PNG" class="mini-logo" style="margin-left:5px;"> Havells
-                            </div>
-                            <div class="use-case"><strong>Motor Starters</strong>, Contactors, Overloads | Application: Industrial Motors</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 4: CCTV -->
-                    <div class="matrix-card">
-                        <div class="matrix-head">
-                            <strong>CCTV</strong>
-                            <span>Surveillance</span>
-                        </div>
-                        <div class="matrix-body">
-                            <div class="brand-list">ATRICL Security Solutions</div>
-                            <div class="use-case">Supply, Installation & Maintenance </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 5: Cables & Connection -->
-                    <div class="matrix-card">
-                        <div class="matrix-head">
-                            <strong>CABLES & LUGS</strong>
-                            <span>Connectivity</span>
-                        </div>
-                        <div class="matrix-body">
-                            <div class="brand-list">
-                                <img src="POLI.PNG" class="mini-logo"> Polycab
-                                <img src="paraflex.PNG" class="mini-logo" style="margin-left:5px;"> Paraflex
-                            </div>
-                            <div class="use-case">Power Cables, <strong>Cable Lugs</strong>, Glands | Application: Transmission</div>
-                        </div>
-                    </div>
-
-                    <!-- Item 6: Lighting -->
-                    <div class="matrix-card">
-                        <div class="matrix-head">
-                            <strong>LIGHTING</strong>
-                            <span>Efficiency</span>
-                        </div>
-                        <div class="matrix-body">
-                            <div class="brand-list">
-                                <img src="ledure.JPG" class="mini-logo"> LEDURE
-                                <img src="Havells_Logo.svg.PNG" class="mini-logo" style="margin-left:5px;"> Havells
-                            </div>
-                            <div class="use-case">Flood Lights, Street Lights | Application: Energy Saving</div>
-                        </div>
-                    </div>
-
-                    <!-- Item 7: Spares & Misc -->
-                    <div class="matrix-card">
-                        <div class="matrix-head">
-                            <strong>SPARES & MISC</strong>
-                            <span>General</span>
-                        </div>
-                        <div class="matrix-body">
-                            <div class="brand-list">Leading Brands</div>
-                            <div class="use-case"><strong>Panel Spares</strong>, Hardware, Misc. Items | <span class="amc-badge">AMC AVAILABLE</span></div>
-                        </div>
-                    </div>
-
+                <div>
+                    <h4 class="font-orbitron text-lg font-bold mb-4 text-gray-900">SYSTEMS</h4>
+                    <ul class="space-y-2 text-gray-600 text-sm font-medium">
+                        <li><a href="#" class="hover:text-neonBlue transition-colors">Electrical Supply</a></li>
+                        <li><a href="#" class="hover:text-neonBlue transition-colors">Switchgear & Cables</a></li>
+                        <li><a href="#" class="hover:text-neonBlue transition-colors">CCTV Matrix</a></li>
+                        <li><a href="#" class="hover:text-neonBlue transition-colors">Maintenance</a></li>
+                    </ul>
                 </div>
 
-                <!-- SAFETY INFOGRAPHIC (9 Points) -->
-                <div class="safety-infographic">
-                    <div class="safety-header">ATRICL SAFETY & QUALITY STANDARDS</div>
-                    <div class="safety-grid">
-                        <div class="safety-tip"><span class="safety-icon">⚠️</span> <div class="safety-text"><strong>Avoid Overload:</strong><br>Match MCB rating.</div></div>
-                        <div class="safety-tip"><span class="safety-icon">🛡️</span> <div class="safety-text"><strong>Genuine Parts:</strong><br>Only certified brands.</div></div>
-                        <div class="safety-tip"><span class="safety-icon">🔧</span> <div class="safety-text"><strong>Maintenance:</strong><br>Annual audits.</div></div>
-                        
-                        <div class="safety-tip"><span class="safety-icon">⚡</span> <div class="safety-text"><strong>Shock Proof:</strong><br>Install 30mA RCCB.</div></div>
-                        <div class="safety-tip"><span class="safety-icon">🔌</span> <div class="safety-text"><strong>Earthing:</strong><br>Resistance < 5Ω.</div></div>
-                        <div class="safety-tip"><span class="safety-icon">🔥</span> <div class="safety-text"><strong>Fire Safety:</strong><br>FRLS cables only.</div></div>
-
-                        <div class="safety-tip"><span class="safety-icon">💎</span> <div class="safety-text"><strong>Pure Copper:</strong><br>99.9% electrolytic.</div></div>
-                        <div class="safety-tip"><span class="safety-icon">🌧️</span> <div class="safety-text"><strong>IP Rating:</strong><br>IP65+ for outdoor.</div></div>
-                        <div class="safety-tip"><span class="safety-icon">🔗</span> <div class="safety-text"><strong>Termination:</strong><br>Crimped Lugs.</div></div>
-                    </div>
-                </div>
-
-                <div class="consistent-footer">
-                    <div class="footer-primary-row">
-                        <span>ATRICL®</span>
-                        <span>+91 88737 52101</span>
-                        <span>atricl001@gmail.com</span>
-                        <span>www.atricl.com</span>
-                    </div>
-                    <div class="footer-address">
-                        647/D1, Ground Floor, Sain Path, Opp. Premsons Honda Service Center, Near Kishroganj Chowk, Bhuiya Toli, Upper Bazar, Ranchi - 834001
-                    </div>
+                <div>
+                    <h4 class="font-orbitron text-lg font-bold mb-4 text-gray-900">COMMUNICATE</h4>
+                    <ul class="space-y-4 text-gray-600 text-sm font-medium">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-neonBlue"></i>
+                            <div>
+                                <span class="text-gray-800">HQ Servicing:<br>Jharkhand & Bihar, India</span>
+                                <a href="https://share.google/cgW6SRsXELgkAkBTO" target="_blank" class="block mt-2 text-xs text-neonBlue hover:text-blue-800 transition-colors font-bold tracking-wider uppercase">
+                                    <i class="fa-solid fa-map-pin mr-1"></i> Open Google Maps
+                                </a>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-3 text-neonBlue"></i>
+                            <a href="mailto:atricl001@gmail.com" class="hover:text-blue-800 transition-colors text-gray-800">atricl001@gmail.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone mr-3 text-neonBlue"></i>
+                            <a href="tel:+918873752101" class="hover:text-blue-800 transition-colors text-gray-800">+91 88737 52101</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-brands fa-whatsapp mr-3 text-[#25D366]"></i>
+                            <a href="https://wa.me/918873752101" target="_blank" class="hover:text-green-600 transition-colors text-gray-800">Message on WhatsApp</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <!-- PAGE NUMBER -->
-            <div class="page-num">03</div>
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-medium">
+                <p>&copy; 2024 - 2026 ATRICL. Founded by Ankit Kumar. All systems operational.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-gray-800">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-800">GeM Credentials</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </footer>
 
+    <!-- Three.js Interactive Background Script -->
+    <script>
+        // Tab switching logic for Knowledge Base
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.kb-tab-content').forEach(el => {
+                el.classList.add('hidden');
+                el.style.opacity = '0';
+            });
+            
+            // Reset all buttons
+            document.querySelectorAll('.kb-tab-btn').forEach(el => {
+                el.classList.remove('border-neonBlue', 'text-neonBlue', 'bg-blue-50', 'border-neonOrange', 'text-neonOrange', 'bg-orange-50');
+                el.classList.add('border-transparent', 'text-gray-500', 'hover:bg-gray-100');
+            });
+            
+            // Show selected content
+            const activeContent = document.getElementById(tabId);
+            activeContent.classList.remove('hidden');
+            setTimeout(() => activeContent.style.opacity = '1', 50); // slight delay for smooth fade
+            
+            // Highlight selected button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('border-transparent', 'text-gray-500', 'hover:bg-gray-100');
+            
+            // Apply color based on the selected tab (Blue for electrical, Orange for surveillance)
+            if(tabId === 'tab-electrical') {
+                activeBtn.classList.add('border-neonBlue', 'text-neonBlue', 'bg-blue-50');
+            } else {
+                activeBtn.classList.add('border-neonOrange', 'text-neonOrange', 'bg-orange-50');
+            }
+        }
+
+        // Set up scene, camera, and renderer
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        
+        // Add a subtle fog matching the light background
+        scene.fog = new THREE.FogExp2(0xf8fafc, 0.003);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // Alpha set to true allows HTML background color to show through
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Core Object: Representing Electrical/Data Core
+        const coreGeometry = new THREE.IcosahedronGeometry(10, 2);
+        
+        // Changed to NormalBlending so it shows up on white backgrounds
+        const coreMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0x0077ff, 
+            wireframe: true,
+            transparent: true,
+            opacity: 0.15,
+            blending: THREE.NormalBlending
+        });
+        const core = new THREE.Mesh(coreGeometry, coreMaterial);
+        scene.add(core);
+
+        // Second Inner Core (Surveillance/Orange aspect)
+        const innerGeometry = new THREE.OctahedronGeometry(6, 1);
+        const innerMaterial = new THREE.MeshBasicMaterial({
+            color: 0xe65c00,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.25,
+            blending: THREE.NormalBlending
+        });
+        const innerCore = new THREE.Mesh(innerGeometry, innerMaterial);
+        scene.add(innerCore);
+
+        // Particles System for Energy/Data flow
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 1000; // Adjusted for light theme performance/visuals
+        const posArray = new Float32Array(particlesCount * 3);
+        const colorsArray = new Float32Array(particlesCount * 3);
+
+        const color1 = new THREE.Color(0x0077ff); // Darker Blue
+        const color2 = new THREE.Color(0xe65c00); // Darker Orange
+
+        for(let i = 0; i < particlesCount * 3; i+=3) {
+            // Distribute particles in a large sphere
+            const radius = 30 + Math.random() * 50;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos((Math.random() * 2) - 1);
+
+            posArray[i] = radius * Math.sin(phi) * Math.cos(theta);
+            posArray[i+1] = radius * Math.sin(phi) * Math.sin(theta);
+            posArray[i+2] = radius * Math.cos(phi);
+
+            // Mix colors
+            const mixedColor = Math.random() > 0.5 ? color1 : color2;
+            colorsArray[i] = mixedColor.r;
+            colorsArray[i+1] = mixedColor.g;
+            colorsArray[i+2] = mixedColor.b;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.4,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.6,
+            blending: THREE.NormalBlending
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Position Camera
+        camera.position.z = 30;
+
+        // Mouse interaction variables
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX);
+            mouseY = (event.clientY - windowHalfY);
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            const elapsedTime = clock.getElapsedTime();
+
+            // Smooth mouse follow (Parallax effect)
+            targetX = mouseX * 0.001;
+            targetY = mouseY * 0.001;
+            
+            core.rotation.y += 0.005;
+            core.rotation.x += 0.002;
+            
+            innerCore.rotation.y -= 0.008;
+            innerCore.rotation.z += 0.005;
+
+            // Slowly rotate particle field
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            
+            // Add subtle mouse parallax to camera
+            camera.position.x += (mouseX * 0.01 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 0.01 - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+        }
+
+        // Handle Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Ensure animation starts only after page is loaded completely
+        window.onload = () => {
+            // Force page load at the top (Home Section)
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+
+            animate();
+            
+            // Intersection Observer for scroll animations (Reveal effect)
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.05, // Lowered threshold so elements trigger earlier/reliably
+                rootMargin: "0px 0px -20px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Stop observing once revealed to keep it visible
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+        };
+    </script>
 </body>
 </html>
