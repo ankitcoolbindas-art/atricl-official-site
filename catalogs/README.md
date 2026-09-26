@@ -4,7 +4,7 @@ This directory contains owner-confirmed manufacturer catalog downloads for the f
 
 ## Naming
 
-- Current edition: `{brand-slug}-catalog-current.pdf`
+- Current edition: `{brand-slug}-catalog-current.pdf` (or product-line-specific current names when a brand has multiple PDFs)
 - Previous editions: `{brand-slug}-catalog-YYYY-MM.pdf` or `{brand-slug}-catalog-vN.pdf`
 - Keep current PDFs in `current/` and dated/versioned previous PDFs in `archive/`.
 
