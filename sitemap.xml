@@ -46,6 +46,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.atricl.com/catalogs.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://www.atricl.com/brands.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -72,6 +77,11 @@
   </url>
   <url>
     <loc>https://www.atricl.com/brands-jiva.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/blog/major-electrical-brands-india-market-overview.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>

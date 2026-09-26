@@ -146,12 +146,29 @@
                         <a href="about.html" class="text-gray-700 hover:text-neonBlue transition-colors px-2 py-2 rounded-md text-sm font-bold uppercase tracking-widest">About</a>
                         <a href="products.html" class="text-neonBlue transition-colors px-2 py-2 rounded-md text-sm font-bold uppercase tracking-widest">Products</a>
                         <a href="brands.html" class="text-gray-700 hover:text-neonBlue transition-colors px-2 py-2 rounded-md text-sm font-bold uppercase tracking-widest">Brands</a>
+                        <a href="catalogs.html" class="text-gray-700 hover:text-neonBlue transition-colors px-2 py-2 rounded-md text-sm font-bold uppercase tracking-widest" aria-label="Catalog downloads">Catalogs</a>
                         <a href="surveillance.html" class="text-gray-700 hover:text-neonBlue transition-colors px-2 py-2 rounded-md text-sm font-bold uppercase tracking-widest">Surveillance</a>
                         <a href="blog/index.html" class="text-gray-700 hover:text-neonBlue transition-colors px-2 py-2 rounded-md text-sm font-bold uppercase tracking-widest">Knowledge</a>
                         <a href="contact.html" class="border-2 border-neonBlue text-neonBlue hover:bg-neonBlue hover:text-white transition-all px-5 py-2 rounded-full text-sm font-bold uppercase tracking-widest">Request a Quote</a>
                     </div>
                 </div>
+                <button type="button" id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-neonBlue hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-neonBlue" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+                    <i class="fa-solid fa-bars text-2xl" id="mobile-menu-icon"></i>
+                </button>
             </div>
+        </div>
+        <div id="mobile-menu-backdrop" class="hidden md:hidden fixed inset-0 z-40 bg-black/20" aria-hidden="true"></div>
+        <div id="mobile-menu" class="hidden md:hidden relative z-50 mx-3 mb-3 mt-1 rounded-2xl border border-white/70 bg-white/95 p-3 shadow-xl backdrop-blur-md">
+          <div class="space-y-1">
+            <a href="index.html" class="block w-full rounded-xl px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">Home</a>
+            <a href="about.html" class="block w-full rounded-xl px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">About</a>
+            <a href="products.html" class="block w-full rounded-xl px-4 py-3 text-base font-bold uppercase tracking-widest text-neonBlue hover:text-neonBlue transition-colors">Products</a>
+            <a href="brands.html" class="block w-full rounded-xl px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">Brands</a>
+            <a href="catalogs.html" class="block w-full rounded-xl px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors" aria-label="Catalog downloads">Catalogs</a>
+            <a href="surveillance.html" class="block w-full rounded-xl px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">Surveillance</a>
+            <a href="blog/index.html" class="block w-full rounded-xl px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">Knowledge</a>
+            <a href="contact.html" class="block w-full rounded-xl bg-neonBlue px-4 py-3 text-center text-base font-bold uppercase tracking-widest text-white shadow-md transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-neonBlue mt-3">Request a Quote</a>
+          </div>
         </div>
     </nav>
 
@@ -236,6 +253,7 @@
                         <li><a href="maintenance.html" class="hover:text-neonBlue transition-colors">Maintenance</a></li>
                         <li><a href="blog/index.html" class="hover:text-neonBlue transition-colors">Knowledge Hub</a></li>
                         <li><a href="about.html" class="hover:text-neonBlue transition-colors">About</a></li>
+                        <li><a href="catalogs.html" class="hover:text-neonBlue transition-colors">Catalog Downloads</a></li>
                     </ul>
                 </div>
                 <div>
@@ -276,5 +294,39 @@
         </div>
     </footer>
 
+    <script>
+    (function () {
+      var btn = document.getElementById('mobile-menu-button');
+      var menu = document.getElementById('mobile-menu');
+      var icon = document.getElementById('mobile-menu-icon');
+      var backdrop = document.getElementById('mobile-menu-backdrop');
+      if (!btn || !menu) return;
+
+      function setMenuState(open) {
+        menu.classList.toggle('hidden', !open);
+        if (backdrop) {
+          backdrop.classList.toggle('hidden', !open);
+          backdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        if (icon) {
+          icon.classList.toggle('fa-bars', !open);
+          icon.classList.toggle('fa-xmark', open);
+        }
+      }
+
+      btn.addEventListener('click', function () {
+        setMenuState(menu.classList.contains('hidden'));
+      });
+      if (backdrop) backdrop.addEventListener('click', function () { setMenuState(false); });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setMenuState(false); });
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') setMenuState(false);
+      });
+    })();
+    </script>
 </body>
 </html>
