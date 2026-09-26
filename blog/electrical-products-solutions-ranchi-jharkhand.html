@@ -156,7 +156,21 @@
                         <a href="../contact.html" class="border-2 border-neonBlue text-neonBlue hover:bg-neonBlue hover:text-white transition-all px-5 py-2 rounded-full text-sm font-bold uppercase tracking-widest">Request a Quote</a>
                     </div>
                 </div>
+                <button type="button" id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-neonBlue hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-neonBlue" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+                    <i class="fa-solid fa-bars text-2xl" id="mobile-menu-icon"></i>
+                </button>
             </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white/95 backdrop-blur-md">
+          <div class="px-4 pt-2 pb-4 space-y-1">
+            <a href="../index.html" class="block w-full px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">Home</a>
+            <a href="../about.html" class="block w-full px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">About</a>
+            <a href="../products.html" class="block w-full px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">Products</a>
+            <a href="../brands.html" class="block w-full px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">Brands</a>
+            <a href="../surveillance.html" class="block w-full px-4 py-3 text-base font-bold uppercase tracking-widest text-gray-700 hover:text-neonBlue transition-colors">Surveillance</a>
+            <a href="../blog/index.html" class="block w-full px-4 py-3 text-base font-bold uppercase tracking-widest text-neonBlue hover:text-neonBlue transition-colors">Knowledge</a>
+            <a href="../contact.html" class="block w-full text-center rounded-full border-2 border-neonBlue text-neonBlue hover:bg-neonBlue hover:text-white transition-all px-4 py-3 text-base font-bold uppercase tracking-widest mt-2">Request a Quote</a>
+          </div>
         </div>
     </nav>
 
@@ -372,5 +386,35 @@
         </div>
     </footer>
 
+    <script>
+    (function () {
+      var btn = document.getElementById('mobile-menu-button');
+      var menu = document.getElementById('mobile-menu');
+      var icon = document.getElementById('mobile-menu-icon');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function () {
+        var isHidden = menu.classList.contains('hidden');
+        if (isHidden) {
+          menu.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+          btn.setAttribute('aria-label', 'Close menu');
+          if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-xmark'); }
+        } else {
+          menu.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Open menu');
+          if (icon) { icon.classList.remove('fa-xmark'); icon.classList.add('fa-bars'); }
+        }
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          menu.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Open menu');
+          if (icon) { icon.classList.remove('fa-xmark'); icon.classList.add('fa-bars'); }
+        });
+      });
+    })();
+    </script>
 </body>
 </html>
