@@ -46,6 +46,36 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.atricl.com/brands.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/brands-cs-electric.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/brands-khul-bldc-fan.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/brands-greatwhite.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/brands-ledure-lighting.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/brands-jiva.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://www.atricl.com/blog/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -82,6 +112,31 @@
   </url>
   <url>
     <loc>https://www.atricl.com/blog/factory-perimeter-cctv-planning.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/blog/gem-electrical-procurement-basics-jharkhand.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/blog/electrical-cctv-bom-small-factory-warehouse.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/blog/how-contractors-brief-ranchi-electrical-supplier.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/blog/switchgear-cctv-maintenance-amc-checklist.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/blog/bihar-electrical-project-supply-buyer-questions.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
