@@ -1,6 +1,6 @@
 # Brand catalog manifest
 
-C&S Electric current catalog is available (authorised). Siemens SINOPLUS manufacturer price list is available under **Also available** (supply against RFQ — not authorised). All other authorised current and archive slots are awaiting owner upload. No placeholder or invented PDFs are included.
+C&S Electric and Ledure Lighting Ltd current catalogs are available (authorised). Siemens SINOPLUS manufacturer price list is available under **Also available** (supply against RFQ — not authorised). Remaining authorised current and archive slots are awaiting owner upload. No placeholder or invented PDFs are included.
 
 ## Authorised brands
 
@@ -9,7 +9,7 @@ C&S Electric current catalog is available (authorised). Siemens SINOPLUS manufac
 | C&S Electric | Available | `catalogs/current/cs-electric-catalog-current.pdf` | Awaiting upload |
 | Khul BLDC fan | Awaiting upload | Awaiting upload | Awaiting upload |
 | Greatwhite | Awaiting upload | Awaiting upload | Awaiting upload |
-| Ledure Lighting Ltd | Awaiting upload | Awaiting upload | Awaiting upload |
+| Ledure Lighting Ltd | Available | `catalogs/current/ledure-luminaries-pricelist-current.pdf` + `catalogs/current/ledure-architectural-catalog-current.pdf` | Awaiting upload |
 | Jiva | Awaiting upload | Awaiting upload | Awaiting upload |
 
 ## Also available (not authorised)
