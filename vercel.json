@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "le.atricl.com"
+        }
+      ],
+      "destination": "/le/index.html"
+    }
+  ]
+}
