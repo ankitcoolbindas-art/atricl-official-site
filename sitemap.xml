@@ -110,9 +110,15 @@
   </url>
   <url>
     <loc>https://www.atricl.com/blog/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.atricl.com/blog/atricl-ranchi-electrical-brand-press-note-2026.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.atricl.com/blog/major-electrical-brands-india-market-overview.html</loc>
@@ -317,10 +323,17 @@
   </url>
   <url>
     <loc>https://www.atricl.com/hi/blog/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.atricl.com/hi/blog/atricl-ranchi-electrical-brand-press-note-2026.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://www.atricl.com/hi/blog/industrial-led-lighting-upgrades.html</loc>
     <lastmod>2026-10-04</lastmod>
