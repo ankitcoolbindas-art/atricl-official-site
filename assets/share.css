@@ -1,0 +1,12 @@
+/* ATRICL blog share bar */
+.atricl-share{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:1.25rem 0 0}
+.atricl-share--end{margin:2rem 0 0;padding-top:1.25rem;border-top:1px solid #e2e8f0}
+.atricl-share__label{font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#334155;margin-right:.25rem}
+.atricl-share__btn{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;min-width:2.5rem;height:2.5rem;padding:0 .7rem;border-radius:9999px;border:1px solid #cbd5e1;background:#1f2937;color:#fff;font:600 .8rem/1 inherit;cursor:pointer;text-decoration:none!important;transition:background .2s,border-color .2s,transform .2s}
+.atricl-share__btn svg{width:1.05rem;height:1.05rem;fill:currentColor;flex:none}
+.atricl-share__btn:hover{background:#b87333;border-color:#b87333;transform:translateY(-1px)}
+.atricl-share__btn:focus-visible{outline:3px solid #b87333;outline-offset:2px}
+.atricl-share__btn[hidden]{display:none}
+.atricl-share__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.prose-atricl .atricl-share__btn{color:#fff}
+@media (max-width:480px){.atricl-share__txt{display:none}}
