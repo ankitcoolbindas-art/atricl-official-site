@@ -1,0 +1,70 @@
+/* ATRICL enquiry (quote) list. Client-side only; no prices. Colours follow site: blue #006ae6, orange #bf4b00. */
+.enq-add{display:flex;flex-wrap:wrap;align-items:flex-end;gap:.5rem;margin-top:1rem;padding-top:.85rem;border-top:1px dashed rgba(0,106,230,.25);font-family:'Space Grotesk',sans-serif}
+.enq-add--rfq{border-top-color:rgba(191,75,0,.3)}
+.enq-field{display:flex;flex-direction:column;gap:.2rem;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin:0}
+.enq-field--range{flex:1 1 12rem;min-width:0}
+.enq-field--qty{flex:0 0 5.25rem}
+.enq-field select,.enq-field input{width:100%;min-height:44px;border:1px solid #cbd5e1;border-radius:.75rem;background:#fff;padding:.45rem .6rem;font:500 .875rem/1.3 'Space Grotesk',sans-serif;color:#1e293b;text-transform:none;letter-spacing:0}
+.enq-field select{text-overflow:ellipsis}
+.enq-field select:focus-visible,.enq-field input:focus-visible,.enq-btn:focus-visible,.enq-badge:focus-visible,.enq-icon-btn:focus-visible,.enq-status a:focus-visible{outline:3px solid #006ae6;outline-offset:2px}
+.enq-btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:44px;padding:.55rem 1.1rem;border:0;border-radius:9999px;background:#006ae6;color:#fff;font:700 .875rem/1 'Space Grotesk',sans-serif;cursor:pointer;transition:background .2s,transform .1s;flex:0 0 auto}
+.enq-btn:hover{background:#0056bd}
+.enq-btn:active{transform:scale(.97)}
+.enq-add--rfq .enq-btn{background:#bf4b00}
+.enq-add--rfq .enq-btn:hover{background:#9a3c00}
+.enq-btn svg,.enq-badge svg,.enq-icon-btn svg{width:1.05em;height:1.05em;fill:currentColor;flex:none}
+.enq-status{flex:1 0 100%;min-height:1.1rem;font-size:.8rem;font-weight:600;color:#047857}
+.enq-status:empty{min-height:0}
+.enq-status a{color:#006ae6;font-weight:700;text-decoration:underline}
+@media (max-width:480px){.enq-field--range{flex-basis:100%}.enq-field--qty{flex-basis:4.5rem}.enq-add .enq-btn{flex:1 1 0;min-width:0;padding:.55rem .75rem;line-height:1.15;text-align:center}}
+
+/* Header badge (inserted into the fixed nav row, before the mobile menu button) */
+nav .h-20>.flex-shrink-0{margin-right:auto}
+.enq-badge{position:relative;display:inline-flex;align-items:center;gap:.4rem;min-height:44px;min-width:44px;justify-content:center;padding:.4rem .75rem;margin-left:auto;margin-right:.5rem;border:2px solid #bf4b00;border-radius:9999px;color:#bf4b00;background:#fff;font:700 .75rem/1 'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s}
+.enq-badge:hover{background:#bf4b00;color:#fff}
+.enq-badge svg{width:1.15rem;height:1.15rem}
+.enq-badge__txt{display:none}
+.enq-badge__n{position:absolute;top:-.45rem;right:-.45rem;min-width:1.35rem;height:1.35rem;padding:0 .3rem;border-radius:9999px;background:#006ae6;color:#fff;font-size:.72rem;line-height:1.35rem;text-align:center;letter-spacing:0;box-shadow:0 0 0 2px #fff}
+.enq-badge__n[hidden]{display:none}
+.enq-badge.enq-bump{animation:enqbump .35s ease}
+@keyframes enqbump{50%{transform:scale(1.12)}}
+@media (min-width:768px){.enq-badge{margin-left:.75rem;margin-right:0}}
+@media (min-width:1280px){.enq-badge__txt{display:inline}}
+@media (prefers-reduced-motion:reduce){.enq-badge.enq-bump{animation:none}.enq-btn{transition:none}}
+
+/* Enquiry page */
+.enq-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.85rem}
+.enq-item{border:1px solid #dbeafe;background:rgba(239,246,255,.55);border-radius:1rem;padding:1rem}
+.enq-item--rfq{border-color:#fed7aa;background:rgba(255,247,237,.7)}
+.enq-item__head{display:flex;gap:.75rem;align-items:flex-start;justify-content:space-between}
+.enq-item__name{font-weight:700;color:#111827;font-size:1rem;line-height:1.35;margin:0}
+.enq-item__meta{font-size:.8rem;color:#64748b;font-weight:600;margin:.2rem 0 0}
+.enq-item__meta a{color:#006ae6;font-weight:700}
+.enq-tag{display:inline-block;margin-left:.35rem;padding:.05rem .45rem;border-radius:9999px;border:1px solid #fdba74;background:#fff7ed;color:#bf4b00;font-size:.68rem;font-weight:700;letter-spacing:.06em;vertical-align:middle}
+.enq-item__rfq{font-size:.75rem;color:#9a3c00;font-weight:600;margin:.35rem 0 0}
+.enq-item__row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:flex-end;margin-top:.75rem}
+.enq-stepper{display:inline-flex;align-items:stretch;border:1px solid #cbd5e1;border-radius:.75rem;background:#fff;overflow:hidden}
+.enq-stepper input{width:4.25rem;min-height:44px;border:0;text-align:center;font:600 .95rem 'Space Grotesk',sans-serif;color:#1e293b;-moz-appearance:textfield}
+.enq-stepper input::-webkit-outer-spin-button,.enq-stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.enq-stepper input:focus-visible{outline:3px solid #006ae6;outline-offset:-3px}
+.enq-icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:0;background:transparent;color:#006ae6;font:700 1.1rem 'Space Grotesk',sans-serif;cursor:pointer}
+.enq-icon-btn:hover{background:#eff6ff}
+.enq-remove{color:#b91c1c;border-radius:.75rem;font-size:.8rem;gap:.3rem;padding:0 .6rem}
+.enq-remove:hover{background:#fef2f2}
+.enq-note{flex:1 1 14rem}
+.enq-empty{padding:1.25rem;border:1px dashed #93c5fd;border-radius:1rem;color:#475569;font-weight:500;background:#fff}
+.enq-empty a{color:#006ae6;font-weight:700}
+.enq-error{color:#b91c1c;font-size:.85rem;font-weight:600}
+.enq-error:empty{display:none}
+.enq-ok{color:#047857;font-size:.9rem;font-weight:600}
+.enq-ok:empty{display:none}
+.enq-send{display:flex;flex-direction:column;gap:.6rem}
+@media (min-width:640px){.enq-send{flex-direction:row}}
+.enq-send .enq-btn{min-height:52px;padding:.8rem 1.4rem;font-size:.95rem;flex:1 1 0}
+.enq-btn--wa{background:#137a3c}
+.enq-btn--wa:hover{background:#0f6431}
+.enq-btn--mail{background:#fff;color:#006ae6;border:2px solid #006ae6}
+.enq-btn--mail:hover{background:#eff6ff}
+.enq-btn--ghost{background:transparent;color:#b91c1c;border:1px solid #fecaca;min-height:40px;font-size:.8rem}
+.enq-btn--ghost:hover{background:#fef2f2}
+.enq-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
