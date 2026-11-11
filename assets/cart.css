@@ -68,3 +68,42 @@ nav .h-20>.flex-shrink-0{margin-right:auto}
 .enq-btn--ghost{background:transparent;color:#b91c1c;border:1px solid #fecaca;min-height:40px;font-size:.8rem}
 .enq-btn--ghost:hover{background:#fef2f2}
 .enq-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Price-on-request label in the cart */
+.enq-por{color:#bf4b00;font-weight:700}
+
+/* Floating enquiry badge (product / shop pages) */
+.enq-fab{position:fixed;right:1rem;bottom:1rem;z-index:40;display:inline-flex;align-items:center;gap:.45rem;min-height:52px;min-width:52px;padding:.7rem 1rem;border-radius:9999px;background:#006ae6;color:#fff;font:700 .8rem/1 'Space Grotesk',sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 8px 24px rgba(0,106,230,.35)}
+.enq-fab:hover{background:#0056bd;color:#fff}
+.enq-fab svg{width:1.25rem;height:1.25rem;fill:currentColor}
+.enq-fab .enq-badge__n{top:-.35rem;right:-.25rem;box-shadow:0 0 0 2px #006ae6}
+.enq-fab__txt{display:none}
+.enq-fab:focus-visible{outline:3px solid #bf4b00;outline-offset:3px}
+@media (min-width:768px){.enq-fab{right:1.5rem;bottom:1.5rem}.enq-fab__txt{display:inline}}
+@media (prefers-reduced-motion:reduce){.enq-fab.enq-bump{animation:none}}
+
+/* Shop catalogue */
+.shop-group{margin-bottom:2.5rem}
+.shop-group__title{margin:0 0 .25rem}
+.shop-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media (min-width:640px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.shop-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.shop-card{display:flex;flex-direction:column;border:1px solid #dbeafe;background:rgba(239,246,255,.55);border-radius:1rem;padding:1.1rem 1.15rem}
+.shop-card--rfq{border-color:#fed7aa;background:rgba(255,247,237,.7)}
+.shop-card__brand{margin:0;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#64748b}
+.shop-card__name{margin:.35rem 0 .25rem;font-family:Orbitron,sans-serif;font-weight:700;font-size:1.02rem;line-height:1.35;color:#111827}
+.shop-card__price{margin:0 0 .4rem;font-size:.85rem;font-weight:700;color:#bf4b00}
+.shop-card__page{font-size:.8rem;font-weight:700;color:#006ae6;margin-bottom:.5rem}
+.shop-card .enq-add{margin-top:auto;padding-top:.75rem}
+
+/* Optional UPI advance section */
+.enq-upi{margin-top:2.5rem}
+.enq-upi[hidden]{display:none !important}
+.enq-upi--demo{outline:2px dashed #bf4b00;outline-offset:6px}
+.enq-upi-demo{margin:0 0 1rem;padding:.65rem .85rem;border-radius:.75rem;background:#fff7ed;border:1px solid #fed7aa;color:#9a3c00;font-weight:700;font-size:.85rem}
+.enq-upi-row{display:flex;flex-wrap:wrap;gap:1.25rem;align-items:flex-start}
+.enq-upi-controls{flex:1 1 16rem}
+.enq-upi-qr{flex:0 0 auto;width:12rem;max-width:100%;padding:.6rem;background:#fff;border:1px solid #dbeafe;border-radius:1rem}
+.enq-upi-qr svg{display:block;width:100%;height:auto}
+.enq-upi-link{display:inline-flex;margin-top:.75rem}
+.enq-upi-meta{margin:.75rem 0 0;font-size:.8rem;font-weight:600;color:#475569;word-break:break-all}
