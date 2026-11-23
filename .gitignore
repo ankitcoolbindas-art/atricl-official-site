@@ -1,0 +1,4 @@
+# Local CI artifacts (tools/ci)
+.lighthouseci/
+lhci-report/
+node_modules/

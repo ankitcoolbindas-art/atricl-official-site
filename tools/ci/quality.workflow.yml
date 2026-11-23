@@ -1,0 +1,69 @@
+# Dev-only quality checks. Nothing here deploys or changes the live site.
+name: Site quality (HTML + Lighthouse)
+
+on:
+  pull_request:
+    paths:
+      - '**.html'
+      - 'assets/**'
+      - 'tools/ci/**'
+      - '.github/workflows/quality.yml'
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'Optional: run Lighthouse against this public base URL (e.g. a Vercel preview with protection bypass) instead of a local static server'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  html-validate:
+    name: html-validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate HTML (EN + HI)
+        run: bash tools/ci/html-validate.sh
+
+  lighthouse:
+    name: Lighthouse CI (warn-only budgets)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # Soft-fail: budgets only warn, and an LHCI hiccup never blocks a PR.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Lighthouse against a local static server
+        if: ${{ !inputs.target_url }}
+        run: npx --yes @lhci/cli@0.16 autorun --config=tools/ci/lighthouserc.json
+      - name: Lighthouse against a given URL
+        if: ${{ inputs.target_url }}
+        env:
+          BASE: ${{ inputs.target_url }}
+        run: |
+          BASE="${BASE%/}"
+          npx --yes @lhci/cli@0.16 collect --numberOfRuns=1 --settings.chromeFlags="--no-sandbox --headless=new" \
+            --url="$BASE/" --url="$BASE/hi/" --url="$BASE/contact.html" --url="$BASE/products-switchgear.html"
+          npx --yes @lhci/cli@0.16 assert --config=tools/ci/lighthouserc.json || true
+          npx --yes @lhci/cli@0.16 upload --target=filesystem --outputDir=./lhci-report
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: lhci-report
+          if-no-files-found: ignore
+          retention-days: 14

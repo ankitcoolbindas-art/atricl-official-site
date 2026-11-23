@@ -1,0 +1,13 @@
+{
+  "$schema": "https://html-validate.org/schemas/config.json",
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "tel-non-breaking": "off",
+    "no-trailing-whitespace": "off",
+    "no-inline-style": "off",
+    "void-style": "off",
+    "no-raw-characters": ["warn", { "relaxed": true }],
+    "no-implicit-button-type": "warn",
+    "no-implicit-input-type": "warn"
+  }
+}
