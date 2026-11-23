@@ -1,0 +1,38 @@
+/* ATRICL /tools/ pages: calculator styles (plain CSS, palette #006ae6 / #bf4b00). */
+.lc-disclaimer{display:flex;gap:.75rem;align-items:flex-start;border:2px solid #bf4b00;background:#fff7ed;color:#7c2d12;border-radius:1rem;padding:1rem 1.25rem;font-weight:500;line-height:1.6}
+.lc-disclaimer i{color:#bf4b00;font-size:1.25rem;margin-top:.15rem}
+.lc-disclaimer p{margin:0}
+.lc-label{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin-bottom:.35rem}
+html[lang^="hi"] .lc-label{text-transform:none;letter-spacing:0;font-size:.85rem}
+.lc-input{width:100%;border-radius:.75rem;border:1px solid #e5e7eb;background:#fff;padding:.75rem 1rem;color:#1f2937;font:inherit}
+.lc-input:focus{outline:none;border-color:#006ae6;box-shadow:0 0 0 3px rgba(0,106,230,.15)}
+.lc-input[readonly]{background:#f8fafc;color:#475569}
+.lc-input[aria-invalid="true"]{border-color:#b91c1c}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.lc-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.lc-chip{position:relative;cursor:pointer}
+.lc-chip input{position:absolute;opacity:0;width:1px;height:1px}
+.lc-chip span{display:inline-block;padding:.55rem 1rem;border:2px solid #d1d5db;border-radius:999px;font-weight:700;font-size:.9rem;color:#374151;background:#fff}
+.lc-chip input:checked+span{border-color:#006ae6;background:#006ae6;color:#fff}
+.lc-chip input:focus-visible+span{outline:3px solid rgba(0,106,230,.35);outline-offset:2px}
+.lc-hint{font-size:.85rem;color:#64748b;margin-top:.35rem;font-weight:500}
+.lc-error{color:#b91c1c;font-weight:600;min-height:1.25rem;margin:0}
+.lc-result{display:grid;gap:.75rem;margin:0 0 1rem}
+.lc-row{border:1px solid #e2e8f0;border-left:4px solid #006ae6;border-radius:.75rem;padding:.75rem 1rem;background:#fff}
+.lc-row--warn{border-left-color:#bf4b00;background:#fff7ed}
+.lc-row dt{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b}
+html[lang^="hi"] .lc-row dt{text-transform:none;letter-spacing:0;font-size:.85rem}
+.lc-row dd{margin:.2rem 0 0}
+.lc-row dd strong{display:block;font-family:Orbitron,'Noto Sans Devanagari',sans-serif;font-size:1.35rem;color:#0f172a}
+.lc-row dd span{display:block;font-size:.85rem;color:#475569;margin-top:.15rem}
+.lc-mini-disclaimer{font-size:.85rem;font-weight:700;color:#bf4b00;margin:.5rem 0 1rem}
+.lc-add{display:inline-flex;align-items:center;justify-content:center;width:100%;padding:.9rem 1.25rem;border-radius:999px;border:2px solid #bf4b00;color:#bf4b00;background:#fff;font-weight:700;letter-spacing:.04em;cursor:pointer}
+.lc-add:hover:not(:disabled){background:#bf4b00;color:#fff}
+.lc-add:disabled{opacity:.45;cursor:not-allowed}
+.lc-added{min-height:1.25rem;margin:.5rem 0 0;font-weight:600;color:#166534}
+.lc-added a{color:#006ae6;text-decoration:underline}
+#lc-result:not([hidden])~#lc-empty,#lc-empty:has(+#lc-result:not([hidden])){display:none}
+.tools-cta{display:flex;gap:1rem;align-items:center;border:2px solid #006ae6;background:#eff6ff;border-radius:1rem;padding:1rem 1.25rem;margin:1.5rem 0}
+.tools-cta i{color:#006ae6;font-size:1.5rem}
+.tools-cta p{margin:0 !important;color:#1e293b !important}
+.tools-cta a{font-weight:700}

@@ -438,7 +438,8 @@
       L.push('', '— ' + T.footer);
       return L.join('\n');
     }
-    window.atriclEnquiry = { buildText: buildText, load: load, addItem: addItem };
+    window.atriclEnquiry = window.atriclEnquiry || {};
+    window.atriclEnquiry.buildText = buildText;
     function after(kind) {
       ok.textContent = kind === 'whatsapp' ? T.okWa : T.okMail;
       track('generate_lead', { method: kind, items_count: load().length });
@@ -472,6 +473,9 @@
     initUpi();
     window.addEventListener('storage', function (e) { if (e.key === KEY) { render(); updateBadges(); } });
   }
+
+  /* Small public API so other scripts (e.g. /tools/ calculator) can add items. */
+  window.atriclEnquiry = { load: load, addItem: function (it) { it.qty = clampQty(it.qty); addItem(it); }, cartUrl: base + 'cart.html' };
 
   function init() {
     makeBadge(); makeFab(); updateBadges();
