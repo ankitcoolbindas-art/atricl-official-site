@@ -181,12 +181,18 @@
                             <input id="enq-company" name="company" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="कंपनी या फर्म का नाम" autocomplete="organization" maxlength="100">
                         </div>
                         <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="enq-pin">पिन कोड <span class="normal-case font-medium tracking-normal">(वैकल्पिक)</span></label>
+                            <input id="enq-pin" name="pin" data-pin data-pin-city="#enq-city" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="6 अंकों का PIN, शहर अपने-आप भरेगा" inputmode="numeric" autocomplete="postal-code" maxlength="6" pattern="[0-9]{6}">
+                            <p class="mt-1 text-sm font-medium text-gray-500" data-hint-for="enq-pin" aria-live="polite"></p>
+                        </div>
+                        <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="enq-city">शहर <span class="text-neonOrange" aria-hidden="true">*</span></label>
                             <input id="enq-city" name="city" required aria-required="true" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="जैसे Ranchi, Patna, Jamshedpur" autocomplete="address-level2" maxlength="60">
                         </div>
                                                 <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="enq-gstin">GSTIN <span class="normal-case font-medium tracking-normal">(वैकल्पिक)</span></label>
-                            <input id="enq-gstin" name="gstin" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="15 अक्षर का GSTIN, अगर है तो" autocomplete="off" maxlength="15" spellcheck="false">
+                            <input id="enq-gstin" name="gstin" data-gstin class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="15 अक्षर का GSTIN, अगर है तो" autocomplete="off" maxlength="15" spellcheck="false">
+                            <p class="mt-1 text-sm font-medium text-gray-500" data-hint-for="enq-gstin" aria-live="polite"></p>
                         </div>
 <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="enq-delivery">डिलीवरी की जगह <span class="normal-case font-medium tracking-normal">(वैकल्पिक)</span></label>
@@ -349,6 +355,7 @@
     })();
     </script>
     <script src="../assets/qrcode.js" defer></script>
+    <script src="../assets/form-helpers.js" defer></script>
     <script src="../assets/cart.js" defer></script>
 </body>
 </html>

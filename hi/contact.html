@@ -287,8 +287,18 @@
                             <input id="phone" name="phone" required class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="10 अंकों का मोबाइल">
                         </div>
                         <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="pin">पिन कोड <span class="normal-case font-medium tracking-normal">(वैकल्पिक)</span></label>
+                            <input id="pin" name="pin" data-pin data-pin-city="#city" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="6 अंकों का PIN, शहर अपने-आप भरेगा" inputmode="numeric" autocomplete="postal-code" maxlength="6" pattern="[0-9]{6}">
+                            <p class="mt-1 text-sm font-medium text-gray-500" data-hint-for="pin" aria-live="polite"></p>
+                        </div>
+                        <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="city">शहर / प्रोजेक्ट जगह</label>
                             <input id="city" name="city" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="जैसे Ranchi, Patna, Jamshedpur">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="gstin">GSTIN <span class="normal-case font-medium tracking-normal">(वैकल्पिक)</span></label>
+                            <input id="gstin" name="gstin" data-gstin class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="15 अक्षर का GSTIN, अगर है तो" autocomplete="off" maxlength="15" spellcheck="false">
+                            <p class="mt-1 text-sm font-medium text-gray-500" data-hint-for="gstin" aria-live="polite"></p>
                         </div>
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="category">कैटेगरी</label>
@@ -344,18 +354,24 @@
             </div>
         </div>
     </main>
+    <script src="../assets/form-helpers.js" defer></script>
     <script>
     function submitQuote(e) {
         e.preventDefault();
         var name = document.getElementById('name').value.trim();
         var phone = document.getElementById('phone').value.trim();
         var city = document.getElementById('city').value.trim();
+        var pin = (document.getElementById('pin') || {}).value || '';
+        var gEl = document.getElementById('gstin'), gstin = gEl ? gEl.value.replace(/\s/g, '').toUpperCase() : '';
+        if (gstin && window.ATRICLForm && !window.ATRICLForm.validGstin(gstin)) { gEl.dispatchEvent(new Event('blur')); gEl.focus(); return false; }
         var category = document.getElementById('category').value;
         var req = document.getElementById('req').value.trim();
         var msg = 'ATRICL Quote Request%0A%0A' +
             'Name/Company: ' + encodeURIComponent(name) + '%0A' +
             'Phone: ' + encodeURIComponent(phone) + '%0A' +
             'City: ' + encodeURIComponent(city) + '%0A' +
+            (pin ? 'PIN: ' + encodeURIComponent(pin.trim()) + '%0A' : '') +
+            (gstin ? 'GSTIN: ' + encodeURIComponent(gstin) + '%0A' : '') +
             'Category: ' + encodeURIComponent(category) + '%0A%0A' +
             'Requirement:%0A' + encodeURIComponent(req);
         window.open('https://wa.me/918873752101?text=' + msg, '_blank');

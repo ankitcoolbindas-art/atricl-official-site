@@ -24,13 +24,13 @@
     browse: [['shop.html', 'शॉप'], ['products.html', 'प्रोडक्ट'], ['products-switchgear.html', 'स्विचगियर'], ['products-lighting.html', 'लाइटिंग'], ['brands.html', 'ब्रांड']],
     errItems: 'लिस्ट में कम से कम एक आइटम जोड़ें।', errName: 'कृपया अपना नाम लिखें।',
     errPhone: 'कृपया सही 10 अंकों का मोबाइल नंबर लिखें।', errCity: 'कृपया शहर लिखें।',
-    errGstin: 'GSTIN 15 अक्षर का होना चाहिए (जैसे 20AAAAA0000A1Z5)।',
+    errGstin: 'GSTIN सही नहीं लग रहा। 15 अक्षर और सही चेक-अंक होना चाहिए (जैसे 20AAAAA0000A1ZG)। GSTIN वैकल्पिक है, चाहें तो खाली छोड़ दें।',
     okWa: 'WhatsApp में आपका मैसेज तैयार है — वहाँ "भेजें" दबाएँ। हम कोटेशन के साथ जवाब देंगे।',
     okMail: 'आपके ईमेल ऐप में मैसेज तैयार है — वहाँ "भेजें" दबाएँ। हम कोटेशन के साथ जवाब देंगे।',
     confirmClear: 'पूरी इन्क्वायरी लिस्ट खाली कर दें?', cleared: 'लिस्ट खाली कर दी गई।',
     hello: 'नमस्ते ATRICL, मुझे इन आइटम का कोटेशन चाहिए:', items: 'आइटम', contact: 'संपर्क',
     lQty: 'मात्रा', lSpec: 'स्पेसिफिकेशन', lPage: 'पेज', lBrand: 'ब्रांड', lRange: 'रेंज',
-    lName: 'नाम', lPhone: 'मोबाइल', lCompany: 'कंपनी', lCity: 'शहर', lDelivery: 'डिलीवरी की जगह',
+    lName: 'नाम', lPhone: 'मोबाइल', lCompany: 'कंपनी', lCity: 'शहर', lPin: 'पिन कोड', lDelivery: 'डिलीवरी की जगह',
     lGstin: 'GSTIN', lMsg: 'संदेश',
     footer: 'atricl.com इन्क्वायरी कार्ट से भेजा गया', subject: function (n, who) { return 'इन्क्वायरी: ' + n + ' आइटम — ' + who; },
     count: function (n) { return n + ' आइटम'; },
@@ -53,13 +53,13 @@
     browse: [['shop.html', 'Shop'], ['products.html', 'Products'], ['products-switchgear.html', 'Switchgear'], ['products-lighting.html', 'Lighting'], ['brands.html', 'Brands']],
     errItems: 'Add at least one item to your list.', errName: 'Please enter your name.',
     errPhone: 'Please enter a valid 10-digit mobile number.', errCity: 'Please enter your city.',
-    errGstin: 'GSTIN should be 15 characters (for example 20AAAAA0000A1Z5).',
+    errGstin: 'This GSTIN doesn’t look right. It needs 15 characters and a valid check digit (for example 20AAAAA0000A1ZG). GSTIN is optional, so you can leave it empty.',
     okWa: 'Your message is ready in WhatsApp — tap Send there. We will reply with a quotation.',
     okMail: 'Your message is ready in your email app — press Send there. We will reply with a quotation.',
     confirmClear: 'Clear your whole enquiry list?', cleared: 'Your list has been cleared.',
     hello: 'Hello ATRICL, please quote for these items:', items: 'Items', contact: 'Contact',
     lQty: 'Qty', lSpec: 'Spec', lPage: 'Page', lBrand: 'Brand', lRange: 'Range',
-    lName: 'Name', lPhone: 'Phone', lCompany: 'Company', lCity: 'City', lDelivery: 'Delivery location',
+    lName: 'Name', lPhone: 'Phone', lCompany: 'Company', lCity: 'City', lPin: 'PIN', lDelivery: 'Delivery location',
     lGstin: 'GSTIN', lMsg: 'Message',
     footer: 'Sent from the atricl.com enquiry cart', subject: function (n, who) { return 'Enquiry: ' + n + (n === 1 ? ' item' : ' items') + ' — ' + who; },
     count: function (n) { return n + (n === 1 ? ' item' : ' items'); },
@@ -338,7 +338,7 @@
     var form = document.getElementById('enq-form');
     var err = document.getElementById('enq-error'), ok = document.getElementById('enq-ok');
     var summary = document.getElementById('enq-count');
-    var fields = ['name', 'phone', 'company', 'city', 'gstin', 'delivery', 'message'];
+    var fields = ['name', 'phone', 'company', 'pin', 'city', 'gstin', 'delivery', 'message'];
     function f(n) { return document.getElementById('enq-' + n); }
 
     try { var saved = JSON.parse(sessionStorage.getItem(FORM_KEY) || '{}'); fields.forEach(function (n) { if (saved[n] && f(n) && !f(n).value) f(n).value = saved[n]; }); } catch (e) {}
@@ -401,7 +401,10 @@
     });
 
     function digits(p) { var d = (p || '').replace(/\D/g, ''); if (d.length === 12 && d.indexOf('91') === 0) d = d.slice(2); if (d.length === 11 && d[0] === '0') d = d.slice(1); return d; }
-    function validGstin(s) { return /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(s.replace(/\s/g, '').toUpperCase()); }
+    function validGstin(s) {
+      if (window.ATRICLForm) return window.ATRICLForm.validGstin(s); /* format + state code + check digit */
+      return /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(s.replace(/\s/g, '').toUpperCase());
+    }
     function validate() {
       var items = load(), v = {};
       fields.forEach(function (n) { v[n] = f(n) ? clean(f(n).value) : ''; });
@@ -432,6 +435,7 @@
       L.push(T.lPhone + ': ' + d.v.phone);
       if (d.v.company) L.push(T.lCompany + ': ' + d.v.company);
       L.push(T.lCity + ': ' + d.v.city);
+      if (/^[1-9][0-9]{5}$/.test(d.v.pin || '')) L.push(T.lPin + ': ' + d.v.pin);
       if (d.v.gstin) L.push(T.lGstin + ': ' + d.v.gstin);
       if (d.v.delivery) L.push(T.lDelivery + ': ' + d.v.delivery);
       if (d.v.message) L.push('', T.lMsg + ': ' + d.v.message);

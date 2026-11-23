@@ -180,12 +180,18 @@
                             <input id="enq-company" name="company" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="Company or firm name" autocomplete="organization" maxlength="100">
                         </div>
                         <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="enq-pin">PIN code <span class="normal-case font-medium tracking-normal">(optional)</span></label>
+                            <input id="enq-pin" name="pin" data-pin data-pin-city="#enq-city" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="6-digit PIN, fills the city" inputmode="numeric" autocomplete="postal-code" maxlength="6" pattern="[0-9]{6}">
+                            <p class="mt-1 text-sm font-medium text-gray-500" data-hint-for="enq-pin" aria-live="polite"></p>
+                        </div>
+                        <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="enq-city">City <span class="text-neonOrange" aria-hidden="true">*</span></label>
                             <input id="enq-city" name="city" required aria-required="true" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="e.g. Ranchi, Patna, Jamshedpur" autocomplete="address-level2" maxlength="60">
                         </div>
                                                 <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="enq-gstin">GSTIN <span class="normal-case font-medium tracking-normal">(optional)</span></label>
-                            <input id="enq-gstin" name="gstin" class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="15-character GSTIN, if you have one" autocomplete="off" maxlength="15" spellcheck="false">
+                            <input id="enq-gstin" name="gstin" data-gstin class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-800 focus:outline-none focus:border-neonBlue" placeholder="15-character GSTIN, if you have one" autocomplete="off" maxlength="15" spellcheck="false">
+                            <p class="mt-1 text-sm font-medium text-gray-500" data-hint-for="enq-gstin" aria-live="polite"></p>
                         </div>
 <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1" for="enq-delivery">Delivery location <span class="normal-case font-medium tracking-normal">(optional)</span></label>
@@ -348,6 +354,7 @@
     })();
     </script>
     <script src="assets/qrcode.js" defer></script>
+    <script src="assets/form-helpers.js" defer></script>
     <script src="assets/cart.js" defer></script>
 </body>
 </html>
