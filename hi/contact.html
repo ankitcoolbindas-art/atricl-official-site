@@ -201,6 +201,11 @@
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #006ae6; border-radius: 4px; }
 
+        .holiday-notice { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.25rem; padding: 0.9rem 1.1rem; border: 2px solid #bf4b00; border-radius: 1rem; background: #fff7ed; color: #7c2d12; font-weight: 500; line-height: 1.55; max-width: 48rem; }
+        .holiday-notice[hidden] { display: none; }
+        .holiday-notice i { color: #bf4b00; font-size: 1.2rem; margin-top: 0.15rem; }
+        .holiday-notice p { margin: 0; }
+        .holiday-notice__sub { margin-top: 0.35rem !important; font-size: 0.9rem; color: #9a3412; }
     </style>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/tailwind-hi.css">
@@ -262,6 +267,7 @@
 
     <header class="pt-28 pb-10 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="holiday-notice" class="holiday-notice" role="status" hidden data-src="../assets/data/holidays-2026-27.json"></div>
             <div class="inline-block mb-4 px-4 py-1 rounded-full border border-neonOrange bg-orange-50 text-neonOrange text-xs font-bold tracking-[0.2em] uppercase shadow-sm">
                 GeM-रजिस्टर्ड सप्लायर · रांची मुख्यालय
             </div>
@@ -480,5 +486,6 @@
       });
     })();
     </script>
+    <script src="../assets/holiday-notice.js" defer></script>
 </body>
 </html>

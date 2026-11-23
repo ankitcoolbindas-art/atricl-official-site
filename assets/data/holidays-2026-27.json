@@ -1,0 +1,408 @@
+{
+  "version": 1,
+  "updated": "2026-11-23",
+  "coverage": {
+    "from": "2026-11-24",
+    "to": "2027-12-31"
+  },
+  "about": "Public holidays in Jharkhand (JH) and Bihar (BR) from the state government lists (gazetted / NI Act holidays). Only dates confirmed in the sources below are included. Muslim festival dates can shift with the moon sighting; check the latest state notification. 'sunday': true marks holidays that fall on a Sunday.",
+  "sources": {
+    "jh-2026": {
+      "title": "Jharkhand Gazette (Extraordinary) No. 542, 15 Dec 2025: Karmik, Prashasnik Sudhar tatha Rajbhasha Vibhag notification 7244 (10 Dec 2025), Schedule 1 (NI Act holidays 2026)",
+      "url": "https://www.datocms-assets.com/40521/1768890373-jharkhand-state-list-of-holidays-2026.pdf",
+      "status": "official gazette"
+    },
+    "jh-2027": {
+      "title": "Jharkhand 2027 holiday list approved by the state cabinet on 18 Nov 2026 (23 NI Act holidays), as reported by Prabhat Khabar, ETV Bharat and Amar Ujala on 19-20 Nov 2026",
+      "url": "https://www.etvbharat.com/hi/state/list-of-gazetted-holidays-for-year-2027-in-jharkhand-has-been-released-jhs26111903531",
+      "status": "cabinet-approved; re-check against the gazette notification when published"
+    },
+    "br-2026": {
+      "title": "Bihar GAD notification 3/H-01/2025-SA 15401, 19 Aug 2025 (holidays for 2026), Schedule 3 (NI Act)",
+      "url": "https://betastate.bihar.gov.in/gad/DyPageView?PageTitleID=10379",
+      "status": "official notification"
+    },
+    "br-2027": {
+      "title": "Bihar Gazette (Extraordinary) No. 1280, 15 Oct 2026: GAD notification 3/H-01/2026-19063 (holidays for 2027), Schedule 3 (NI Act)",
+      "url": "http://betastate.bihar.gov.in/gad/",
+      "status": "official gazette"
+    }
+  },
+  "crossChecked": "2026 dates also match calendar-api-d7a8.onrender.com /v1/holidays?country=IN&year=2026&region=JH|BR (state, gazetted). That API has no 2027 data yet.",
+  "holidays": [
+    {
+      "date": "2026-11-24",
+      "states": [
+        "JH"
+      ],
+      "name_en": "Guru Nanak Jayanti",
+      "name_hi": "गुरु नानक जयंती",
+      "source": [
+        "jh-2026"
+      ]
+    },
+    {
+      "date": "2026-12-25",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Christmas",
+      "name_hi": "क्रिसमस",
+      "source": [
+        "jh-2026",
+        "br-2026"
+      ]
+    },
+    {
+      "date": "2027-01-26",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Republic Day",
+      "name_hi": "गणतंत्र दिवस",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-03-06",
+      "states": [
+        "JH"
+      ],
+      "name_en": "Maha Shivratri",
+      "name_hi": "महाशिवरात्रि",
+      "source": [
+        "jh-2027"
+      ]
+    },
+    {
+      "date": "2027-03-10",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Id-ul-Fitr",
+      "name_hi": "ईद-उल-फ़ितर",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-03-22",
+      "states": [
+        "BR"
+      ],
+      "name_en": "Bihar Diwas",
+      "name_hi": "बिहार दिवस",
+      "source": [
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-03-22",
+      "states": [
+        "JH"
+      ],
+      "name_en": "Holika Dahan",
+      "name_hi": "होलिका दहन",
+      "source": [
+        "jh-2027"
+      ]
+    },
+    {
+      "date": "2027-03-23",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Holi",
+      "name_hi": "होली",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-03-24",
+      "states": [
+        "BR"
+      ],
+      "name_en": "Holi (second day)",
+      "name_hi": "होली (दूसरा दिन)",
+      "source": [
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-03-26",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Good Friday",
+      "name_hi": "गुड फ़्राइडे",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-04-09",
+      "states": [
+        "JH"
+      ],
+      "name_en": "Sarhul",
+      "name_hi": "सरहुल",
+      "source": [
+        "jh-2027"
+      ]
+    },
+    {
+      "date": "2027-04-14",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Dr B. R. Ambedkar Jayanti",
+      "name_hi": "डॉ. भीमराव अंबेडकर जयंती",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-04-15",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Ram Navami",
+      "name_hi": "रामनवमी",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-04-19",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Mahavir Jayanti",
+      "name_hi": "महावीर जयंती",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-05-01",
+      "states": [
+        "BR"
+      ],
+      "name_en": "May Day",
+      "name_hi": "मई दिवस",
+      "source": [
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-05-17",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Id-ul-Zuha (Bakrid)",
+      "name_hi": "ईद-उल-ज़ुहा (बकरीद)",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-05-20",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Buddha Purnima",
+      "name_hi": "बुद्ध पूर्णिमा",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-06-16",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Muharram",
+      "name_hi": "मुहर्रम",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-08-15",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Independence Day",
+      "name_hi": "स्वतंत्रता दिवस",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ],
+      "sunday": true
+    },
+    {
+      "date": "2027-08-15",
+      "states": [
+        "BR"
+      ],
+      "name_en": "Prophet Muhammad's Birthday (Milad-un-Nabi)",
+      "name_hi": "हज़रत मोहम्मद साहब जन्म दिवस (मिलाद-उन-नबी)",
+      "source": [
+        "br-2027"
+      ],
+      "sunday": true
+    },
+    {
+      "date": "2027-08-25",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Janmashtami",
+      "name_hi": "जन्माष्टमी",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-09-11",
+      "states": [
+        "JH"
+      ],
+      "name_en": "Karma Puja",
+      "name_hi": "करमा पूजा",
+      "source": [
+        "jh-2027"
+      ]
+    },
+    {
+      "date": "2027-10-02",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Mahatma Gandhi Jayanti",
+      "name_hi": "महात्मा गांधी जयंती",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-10-07",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Durga Puja (Maha Ashtami)",
+      "name_hi": "दुर्गा पूजा (महाअष्टमी)",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-10-08",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Durga Puja (Maha Navami)",
+      "name_hi": "दुर्गा पूजा (महानवमी)",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-10-09",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Vijayadashami",
+      "name_hi": "विजयादशमी",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-10-29",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Diwali",
+      "name_hi": "दीपावली",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-11-04",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Chhath Puja (evening arghya)",
+      "name_hi": "छठ पूजा (सायं अर्घ्य)",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-11-05",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Chhath Puja (morning arghya)",
+      "name_hi": "छठ पूजा (प्रातः अर्घ्य)",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    },
+    {
+      "date": "2027-12-25",
+      "states": [
+        "JH",
+        "BR"
+      ],
+      "name_en": "Christmas",
+      "name_hi": "क्रिसमस",
+      "source": [
+        "jh-2027",
+        "br-2027"
+      ]
+    }
+  ]
+}
